@@ -377,7 +377,7 @@ int main() {
 	ov7670_set(REG_COM13, 0xc0);
 	ov7670_set(0x70, 0x3A);
 	ov7670_set(0x71, 0x35);
-	ov7670_set(0x72, 0x11); // downsample by 2
+	ov7670_set(0x72, 0x11);
 
 	/* Gamma curve values */
 	ov7670_set(0x7a, 0x20);
@@ -452,15 +452,6 @@ int main() {
 	ov7670_set(0xb3, 0x82);
 	ov7670_set(0xb8, 0x0a);
 
-	/* Matrix coefficients */
-	ov7670_set(0x4f, 0x80);
-	ov7670_set(0x50, 0x80);
-	ov7670_set(0x51, 0);
-	ov7670_set(0x52, 0x22);
-	ov7670_set(0x53, 0x5e);
-	ov7670_set(0x54, 0x80);
-	ov7670_set(0x58, 0x9e);
-
 	/* More reserved magic, some of which tweaks white balance */
 	ov7670_set(0x43, 0x0a);
 	ov7670_set(0x44, 0xf0);
@@ -484,6 +475,42 @@ int main() {
 	ov7670_set(REG_COM8,
 			COM8_FASTAEC | COM8_AECSTEP | COM8_BFILT | COM8_AGC | COM8_AEC
 					| COM8_AWB);
+
+	/* Matrix coefficients */
+	ov7670_set(0x4f, 0x80);
+	ov7670_set(0x50, 0x80);
+	ov7670_set(0x51, 0);
+	ov7670_set(0x52, 0x22);
+	ov7670_set(0x53, 0x5e);
+	ov7670_set(0x54, 0x80);
+	ov7670_set(0x58, 0x9e);
+
+	/* Extra-weird stuff.  Some sort of multiplexor register */
+	ov7670_set(0x79, 0x01);
+	ov7670_set(0xc8, 0xf0);
+	ov7670_set(0x79, 0x0f);
+	ov7670_set(0xc8, 0x00);
+	ov7670_set(0x79, 0x10);
+	ov7670_set(0xc8, 0x7e);
+	ov7670_set(0x79, 0x0a);
+	ov7670_set(0xc8, 0x80);
+	ov7670_set(0x79, 0x0b);
+	ov7670_set(0xc8, 0x01);
+	ov7670_set(0x79, 0x0c);
+	ov7670_set(0xc8, 0x0f);
+	ov7670_set(0x79, 0x0d);
+	ov7670_set(0xc8, 0x20);
+	ov7670_set(0x79, 0x09);
+	ov7670_set(0xc8, 0x80);
+	ov7670_set(0x79, 0x02);
+	ov7670_set(0xc8, 0xc0);
+	ov7670_set(0x79, 0x03);
+	ov7670_set(0xc8, 0x40);
+	ov7670_set(0x79, 0x05);
+	ov7670_set(0xc8, 0x30);
+	ov7670_set(0x79, 0x26);
+	ov7670_set(0xff, 0xff);
+
 
 	NVIC_InitTypeDef NVIC_InitStructure;
 	NVIC_InitStructure.NVIC_IRQChannel = DCMI_IRQn;
@@ -553,7 +580,7 @@ void DCMI_IRQHandler(void) {
 	if (DCMI_GetITStatus(DCMI_IT_FRAME)) {
 		__disable_irq();
 		for (i = 0; i < picture_x * picture_y; i++)
-			usartSendWord(RAM_Buffer[i]);
+			usartSendWord(RAM_Buffer[i+2]);
 		__enable_irq();
 		DCMI_Cmd(DISABLE);
 		DCMI_CaptureCmd(DISABLE);

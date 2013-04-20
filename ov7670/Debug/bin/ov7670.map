@@ -330,7 +330,7 @@ Linker script and memory map
 
                 0x20020000                _eram = 0x20020000
 
-.text           0x08000000     0x2930
+.text           0x08000000     0x2a54
  *(.isr_vector .isr_vector.*)
  .isr_vector    0x08000000      0x188 ..\obj\startup_stm32f4xx.o
                 0x08000000                g_pfnVectors
@@ -485,141 +485,141 @@ Linker script and memory map
  .text.DCMI_init
                 0x0800097c      0x298 ..\obj\main.o
                 0x0800097c                DCMI_init
- .text.main     0x08000c14      0x830 ..\obj\main.o
+ .text.main     0x08000c14      0x950 ..\obj\main.o
                 0x08000c14                main
  .text.DCMI_IRQHandler
-                0x08001444      0x140 ..\obj\main.o
-                0x08001444                DCMI_IRQHandler
+                0x08001564      0x144 ..\obj\main.o
+                0x08001564                DCMI_IRQHandler
  .text.RCC_MCO1Config
-                0x08001584       0x48 ..\obj\stm32f4xx_rcc.o
-                0x08001584                RCC_MCO1Config
+                0x080016a8       0x48 ..\obj\stm32f4xx_rcc.o
+                0x080016a8                RCC_MCO1Config
  .text.RCC_GetClocksFreq
-                0x080015cc      0x1d0 ..\obj\stm32f4xx_rcc.o
-                0x080015cc                RCC_GetClocksFreq
+                0x080016f0      0x1d0 ..\obj\stm32f4xx_rcc.o
+                0x080016f0                RCC_GetClocksFreq
  .text.RCC_AHB1PeriphClockCmd
-                0x0800179c       0x58 ..\obj\stm32f4xx_rcc.o
-                0x0800179c                RCC_AHB1PeriphClockCmd
+                0x080018c0       0x58 ..\obj\stm32f4xx_rcc.o
+                0x080018c0                RCC_AHB1PeriphClockCmd
  .text.RCC_AHB2PeriphClockCmd
-                0x080017f4       0x58 ..\obj\stm32f4xx_rcc.o
-                0x080017f4                RCC_AHB2PeriphClockCmd
+                0x08001918       0x58 ..\obj\stm32f4xx_rcc.o
+                0x08001918                RCC_AHB2PeriphClockCmd
  .text.RCC_APB1PeriphClockCmd
-                0x0800184c       0x58 ..\obj\stm32f4xx_rcc.o
-                0x0800184c                RCC_APB1PeriphClockCmd
+                0x08001970       0x58 ..\obj\stm32f4xx_rcc.o
+                0x08001970                RCC_APB1PeriphClockCmd
  .text.PrintChar
-                0x080018a4       0x40 ..\obj\printf.o
-                0x080018a4                PrintChar
- .text.puts     0x080018e4       0x28 ..\obj\printf.o
-                0x080018e4                puts
- .text.fputc    0x0800190c       0x4c ..\obj\printf.o
-                0x0800190c                fputc
- .text.fputs    0x08001958       0x50 ..\obj\printf.o
-                0x08001958                fputs
+                0x080019c8       0x40 ..\obj\printf.o
+                0x080019c8                PrintChar
+ .text.puts     0x08001a08       0x28 ..\obj\printf.o
+                0x08001a08                puts
+ .text.fputc    0x08001a30       0x4c ..\obj\printf.o
+                0x08001a30                fputc
+ .text.fputs    0x08001a7c       0x50 ..\obj\printf.o
+                0x08001a7c                fputs
  .text.DCMI_DeInit
-                0x080019a8       0x6c ..\obj\stm32f4xx_dcmi.o
-                0x080019a8                DCMI_DeInit
+                0x08001acc       0x6c ..\obj\stm32f4xx_dcmi.o
+                0x08001acc                DCMI_DeInit
  .text.DCMI_Init
-                0x08001a14       0x94 ..\obj\stm32f4xx_dcmi.o
-                0x08001a14                DCMI_Init
+                0x08001b38       0x94 ..\obj\stm32f4xx_dcmi.o
+                0x08001b38                DCMI_Init
  .text.DCMI_Cmd
-                0x08001aa8       0x4c ..\obj\stm32f4xx_dcmi.o
-                0x08001aa8                DCMI_Cmd
+                0x08001bcc       0x4c ..\obj\stm32f4xx_dcmi.o
+                0x08001bcc                DCMI_Cmd
  .text.DCMI_CaptureCmd
-                0x08001af4       0x4c ..\obj\stm32f4xx_dcmi.o
-                0x08001af4                DCMI_CaptureCmd
+                0x08001c18       0x4c ..\obj\stm32f4xx_dcmi.o
+                0x08001c18                DCMI_CaptureCmd
  .text.DCMI_ITConfig
-                0x08001b40       0x5c ..\obj\stm32f4xx_dcmi.o
-                0x08001b40                DCMI_ITConfig
+                0x08001c64       0x5c ..\obj\stm32f4xx_dcmi.o
+                0x08001c64                DCMI_ITConfig
  .text.DCMI_GetFlagStatus
-                0x08001b9c       0x7c ..\obj\stm32f4xx_dcmi.o
-                0x08001b9c                DCMI_GetFlagStatus
+                0x08001cc0       0x7c ..\obj\stm32f4xx_dcmi.o
+                0x08001cc0                DCMI_GetFlagStatus
  .text.DCMI_ClearFlag
-                0x08001c18       0x20 ..\obj\stm32f4xx_dcmi.o
-                0x08001c18                DCMI_ClearFlag
+                0x08001d3c       0x20 ..\obj\stm32f4xx_dcmi.o
+                0x08001d3c                DCMI_ClearFlag
  .text.DCMI_GetITStatus
-                0x08001c38       0x4c ..\obj\stm32f4xx_dcmi.o
-                0x08001c38                DCMI_GetITStatus
+                0x08001d5c       0x4c ..\obj\stm32f4xx_dcmi.o
+                0x08001d5c                DCMI_GetITStatus
  .text.DCMI_ClearITPendingBit
-                0x08001c84       0x20 ..\obj\stm32f4xx_dcmi.o
-                0x08001c84                DCMI_ClearITPendingBit
+                0x08001da8       0x20 ..\obj\stm32f4xx_dcmi.o
+                0x08001da8                DCMI_ClearITPendingBit
  .text.GPIO_Init
-                0x08001ca4      0x154 ..\obj\stm32f4xx_gpio.o
-                0x08001ca4                GPIO_Init
+                0x08001dc8      0x154 ..\obj\stm32f4xx_gpio.o
+                0x08001dc8                GPIO_Init
  .text.GPIO_PinAFConfig
-                0x08001df8       0xac ..\obj\stm32f4xx_gpio.o
-                0x08001df8                GPIO_PinAFConfig
+                0x08001f1c       0xac ..\obj\stm32f4xx_gpio.o
+                0x08001f1c                GPIO_PinAFConfig
  .text.SystemInit
-                0x08001ea4       0x94 ..\obj\system_stm32f4xx.o
-                0x08001ea4                SystemInit
+                0x08001fc8       0x94 ..\obj\system_stm32f4xx.o
+                0x08001fc8                SystemInit
  .text.SetSysClock
-                0x08001f38      0x188 ..\obj\system_stm32f4xx.o
+                0x0800205c      0x188 ..\obj\system_stm32f4xx.o
  .text.DMA_DeInit
-                0x080020c0      0x244 ..\obj\stm32f4xx_dma.o
-                0x080020c0                DMA_DeInit
+                0x080021e4      0x244 ..\obj\stm32f4xx_dma.o
+                0x080021e4                DMA_DeInit
  .text.DMA_Init
-                0x08002304       0xb0 ..\obj\stm32f4xx_dma.o
-                0x08002304                DMA_Init
- .text.DMA_Cmd  0x080023b4       0x38 ..\obj\stm32f4xx_dma.o
-                0x080023b4                DMA_Cmd
+                0x08002428       0xb0 ..\obj\stm32f4xx_dma.o
+                0x08002428                DMA_Init
+ .text.DMA_Cmd  0x080024d8       0x38 ..\obj\stm32f4xx_dma.o
+                0x080024d8                DMA_Cmd
  .text.DMA_GetCmdStatus
-                0x080023ec       0x38 ..\obj\stm32f4xx_dma.o
-                0x080023ec                DMA_GetCmdStatus
+                0x08002510       0x38 ..\obj\stm32f4xx_dma.o
+                0x08002510                DMA_GetCmdStatus
  .text.I2C_Init
-                0x08002424      0x1ac ..\obj\stm32f4xx_i2c.o
-                0x08002424                I2C_Init
- .text.I2C_Cmd  0x080025d0       0x40 ..\obj\stm32f4xx_i2c.o
-                0x080025d0                I2C_Cmd
+                0x08002548      0x1ac ..\obj\stm32f4xx_i2c.o
+                0x08002548                I2C_Init
+ .text.I2C_Cmd  0x080026f4       0x40 ..\obj\stm32f4xx_i2c.o
+                0x080026f4                I2C_Cmd
  .text.I2C_GenerateSTART
-                0x08002610       0x40 ..\obj\stm32f4xx_i2c.o
-                0x08002610                I2C_GenerateSTART
+                0x08002734       0x40 ..\obj\stm32f4xx_i2c.o
+                0x08002734                I2C_GenerateSTART
  .text.I2C_GenerateSTOP
-                0x08002650       0x40 ..\obj\stm32f4xx_i2c.o
-                0x08002650                I2C_GenerateSTOP
+                0x08002774       0x40 ..\obj\stm32f4xx_i2c.o
+                0x08002774                I2C_GenerateSTOP
  .text.I2C_Send7bitAddress
-                0x08002690       0x3c ..\obj\stm32f4xx_i2c.o
-                0x08002690                I2C_Send7bitAddress
+                0x080027b4       0x3c ..\obj\stm32f4xx_i2c.o
+                0x080027b4                I2C_Send7bitAddress
  .text.I2C_AcknowledgeConfig
-                0x080026cc       0x40 ..\obj\stm32f4xx_i2c.o
-                0x080026cc                I2C_AcknowledgeConfig
+                0x080027f0       0x40 ..\obj\stm32f4xx_i2c.o
+                0x080027f0                I2C_AcknowledgeConfig
  .text.I2C_SendData
-                0x0800270c       0x20 ..\obj\stm32f4xx_i2c.o
-                0x0800270c                I2C_SendData
+                0x08002830       0x20 ..\obj\stm32f4xx_i2c.o
+                0x08002830                I2C_SendData
  .text.I2C_ReceiveData
-                0x0800272c       0x1c ..\obj\stm32f4xx_i2c.o
-                0x0800272c                I2C_ReceiveData
+                0x08002850       0x1c ..\obj\stm32f4xx_i2c.o
+                0x08002850                I2C_ReceiveData
  .text.I2C_CheckEvent
-                0x08002748       0x70 ..\obj\stm32f4xx_i2c.o
-                0x08002748                I2C_CheckEvent
+                0x0800286c       0x70 ..\obj\stm32f4xx_i2c.o
+                0x0800286c                I2C_CheckEvent
  .text.I2C_GetFlagStatus
-                0x080027b8       0x78 ..\obj\stm32f4xx_i2c.o
-                0x080027b8                I2C_GetFlagStatus
+                0x080028dc       0x78 ..\obj\stm32f4xx_i2c.o
+                0x080028dc                I2C_GetFlagStatus
  .text.NVIC_Init
-                0x08002830       0xe4 ..\obj\misc.o
-                0x08002830                NVIC_Init
+                0x08002954       0xe4 ..\obj\misc.o
+                0x08002954                NVIC_Init
  *(.glue_7t)
  .glue_7t       0x00000000        0x0 linker stubs
  *(.glue_7)
  .glue_7        0x00000000        0x0 linker stubs
  *(.rodata .rodata* .gnu.linkonce.r.*)
- .rodata        0x08002914       0x1c ..\obj\main.o
+ .rodata        0x08002a38       0x1c ..\obj\main.o
 
-.vfp11_veneer   0x08002930        0x0
+.vfp11_veneer   0x08002a54        0x0
  .vfp11_veneer  0x00000000        0x0 linker stubs
 
-.v4_bx          0x08002930        0x0
+.v4_bx          0x08002a54        0x0
  .v4_bx         0x00000000        0x0 linker stubs
 
 .ARM.extab
  *(.ARM.extab* .gnu.linkonce.armextab.*)
-                0x08002930                __exidx_start = .
+                0x08002a54                __exidx_start = .
 
 .ARM.exidx
  *(.ARM.exidx* .gnu.linkonce.armexidx.*)
-                0x08002930                __exidx_end = .
-                0x08002930                . = ALIGN (0x4)
-                0x08002930                _etext = .
-                0x08002930                _sidata = .
+                0x08002a54                __exidx_end = .
+                0x08002a54                . = ALIGN (0x4)
+                0x08002a54                _etext = .
+                0x08002a54                _sidata = .
 
-.data           0x20000000      0x440 load address 0x08002930
+.data           0x20000000      0x440 load address 0x08002a54
                 0x20000000                _sdata = .
  *(.data .data.*)
  .data          0x20000000       0x10 ..\obj\stm32f4xx_rcc.o
@@ -629,7 +629,7 @@ Linker script and memory map
                 0x20000440                . = ALIGN (0x4)
                 0x20000440                _edata = .
 
-.bss            0x20000440     0xc610 load address 0x08002d70
+.bss            0x20000440     0xc610 load address 0x08002e94
                 0x20000440                _sbss = .
  *(.bss .bss.*)
  .bss           0x20000440       0x10 ..\obj\main.o
@@ -643,7 +643,7 @@ Linker script and memory map
                 0x2000ca50                . = ALIGN (0x4)
                 0x2000ca50                _ebss = .
 
-.co_stack       0x2000ca50      0x800 load address 0x0800f380
+.co_stack       0x2000ca50      0x800 load address 0x0800f4a4
                 0x2000ca50                . = ALIGN (0x8)
  *(.co_stack .co_stack.*)
  .co_stack      0x2000ca50      0x800 ..\obj\startup_stm32f4xx.o
@@ -751,19 +751,19 @@ OUTPUT(ov7670.elf elf32-littlearm)
  .debug_ranges  0x00000590      0x110 ..\obj\stm32f4xx_i2c.o
  .debug_ranges  0x000006a0       0x30 ..\obj\misc.o
 
-.debug_line     0x00000000     0x25fe
+.debug_line     0x00000000     0x2616
  .debug_line    0x00000000      0x445 ..\obj\stm32f4xx_usart.o
  .debug_line    0x00000445       0x9f ..\obj\startup_stm32f4xx.o
- .debug_line    0x000004e4      0x4e2 ..\obj\main.o
- .debug_line    0x000009c6      0x53d ..\obj\stm32f4xx_rcc.o
- .debug_line    0x00000f03      0x40f ..\obj\printf.o
- .debug_line    0x00001312      0x2e0 ..\obj\stm32f4xx_dcmi.o
- .debug_line    0x000015f2      0x2e0 ..\obj\stm32f4xx_gpio.o
- .debug_line    0x000018d2      0x1d6 ..\obj\system_stm32f4xx.o
- .debug_line    0x00001aa8      0x176 ..\obj\syscalls.o
- .debug_line    0x00001c1e      0x37d ..\obj\stm32f4xx_dma.o
- .debug_line    0x00001f9b      0x47d ..\obj\stm32f4xx_i2c.o
- .debug_line    0x00002418      0x1e6 ..\obj\misc.o
+ .debug_line    0x000004e4      0x4fa ..\obj\main.o
+ .debug_line    0x000009de      0x53d ..\obj\stm32f4xx_rcc.o
+ .debug_line    0x00000f1b      0x40f ..\obj\printf.o
+ .debug_line    0x0000132a      0x2e0 ..\obj\stm32f4xx_dcmi.o
+ .debug_line    0x0000160a      0x2e0 ..\obj\stm32f4xx_gpio.o
+ .debug_line    0x000018ea      0x1d6 ..\obj\system_stm32f4xx.o
+ .debug_line    0x00001ac0      0x176 ..\obj\syscalls.o
+ .debug_line    0x00001c36      0x37d ..\obj\stm32f4xx_dma.o
+ .debug_line    0x00001fb3      0x47d ..\obj\stm32f4xx_i2c.o
+ .debug_line    0x00002430      0x1e6 ..\obj\misc.o
 
 .debug_str      0x00000000     0x29de
  .debug_str     0x00000000      0x5c6 ..\obj\stm32f4xx_usart.o

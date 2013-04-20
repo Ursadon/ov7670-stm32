@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <history>
    <processor signature="4.6.2 -mcpu=cortex-m4 -mthumb -g -nostartfiles -Map=ov7670.map -O0 --gc-sections -LE:\dev\CoIDE\configuration\ProgramData\ov7670 -TE:\dev\CoIDE\configuration\ProgramData\ov7670/arm-gcc-link.ld -g">
-      <target file="ov7670.elf" lastModified="13e2535e455">
+      <target file="ov7670.elf" lastModified="13e255744db">
          <source file="..\obj\stm32f4xx_usart.o" lastModified="13e2535dd81"/>
          <source file="..\obj\startup_stm32f4xx.o" lastModified="13e2535ddc8"/>
-         <source file="..\obj\main.o" lastModified="13e2535de62"/>
+         <source file="..\obj\main.o" lastModified="13e255742a8"/>
          <source file="..\obj\stm32f4xx_rcc.o" lastModified="13e2535dedd"/>
          <source file="..\obj\printf.o" lastModified="13e2535df59"/>
          <source file="..\obj\stm32f4xx_dcmi.o" lastModified="13e2535dfcd"/>
