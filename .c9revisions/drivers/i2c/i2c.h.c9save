@@ -1,0 +1,5 @@
+{"ts":1366959809887,"silentsave":true,"restoring":false,"patch":[[]],"length":0}
+{"contributors":[],"silentsave":false,"ts":1366960069862,"patch":[[{"diffs":[[1,"void I2CInit(void);\nvoid I2C_start(I2C_TypeDef* I2Cx, uint8_t address, uint8_t direction);\n"]],"start1":0,"start2":0,"length1":0,"length2":91}]],"length":91,"saved":false}
+{"ts":1366960107183,"patch":[[{"diffs":[[0,"ction);\n"],[1,"void I2C_write(I2C_TypeDef* I2Cx, uint8_t data);\nuint8_t I2C_read_ack(I2C_TypeDef* I2Cx);\nuint8_t I2C_read_nack(I2C_TypeDef* I2Cx);\n"]],"start1":83,"start2":83,"length1":8,"length2":140}]],"length":223,"saved":false}
+{"ts":1366960114895,"patch":[[{"diffs":[[0,"ad_nack(I2C_TypeDef* I2Cx);\n"],[1,"void I2C_stop(I2C_TypeDef* I2Cx);\n"]],"start1":195,"start2":195,"length1":28,"length2":62}]],"length":257,"saved":false}
+{"ts":1366960128692,"patch":[[{"diffs":[[1,"\n"],[0,"void I2CInit(voi"]],"start1":0,"start2":0,"length1":16,"length2":17},{"diffs":[[0,"I2C_stop(I2C_TypeDef* I2Cx);"],[-1,"\n"]],"start1":229,"start2":229,"length1":29,"length2":28}]],"length":257,"saved":false}

@@ -16,5 +16,8 @@
 *.out
 *.app
 
+# Hidden files
+.*
+
 # Compilation folder
 debug/
