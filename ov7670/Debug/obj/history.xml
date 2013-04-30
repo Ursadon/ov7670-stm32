@@ -16,17 +16,17 @@
       <target file="system_stm32f4xx.o" lastModified="13e2535e08e">
          <source file="..\..\..\cmsis_boot\system_stm32f4xx.c" lastModified="13e25213fd7"/>
       </target>
-      <target file="stm32f4xx_i2c.o" lastModified="13e2535e1c6">
-         <source file="..\..\..\cmsis_lib\source\stm32f4xx_i2c.c" lastModified="13e25217349"/>
-      </target>
       <target file="startup_stm32f4xx.o" lastModified="13e2535ddc8">
          <source file="..\..\..\cmsis_boot\startup\startup_stm32f4xx.c" lastModified="13e25213fd4"/>
+      </target>
+      <target file="stm32f4xx_i2c.o" lastModified="13e2535e1c6">
+         <source file="..\..\..\cmsis_lib\source\stm32f4xx_i2c.c" lastModified="13e25217349"/>
       </target>
       <target file="stm32f4xx_usart.o" lastModified="13e2535dd81">
          <source file="..\..\..\cmsis_lib\source\stm32f4xx_usart.c" lastModified="13e25215e4f"/>
       </target>
-      <target file="main.o" lastModified="13e2535de62">
-         <source file="..\..\..\main.c" lastModified="13e2526e160"/>
+      <target file="main.o" lastModified="13e255742a8">
+         <source file="..\..\..\main.c" lastModified="13e25573fde"/>
       </target>
       <target file="stm32f4xx_dcmi.o" lastModified="13e2535dfcd">
          <source file="..\..\..\cmsis_lib\source\stm32f4xx_dcmi.c" lastModified="13e25214df8"/>
