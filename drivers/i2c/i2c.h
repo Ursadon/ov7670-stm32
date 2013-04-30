@@ -1,3 +1,4 @@
+#include "stm32f4xx_i2c.h"
 
 void I2CInit(void);
 void I2C_start(I2C_TypeDef* I2Cx, uint8_t address, uint8_t direction);

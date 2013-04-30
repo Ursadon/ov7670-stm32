@@ -1,3 +1,6 @@
+#include "drivers/ov7670/ov7670.h"
+#include "drivers/ov7670/ov7670reg.h"
+#include "drivers/i2c/i2c.h"
 
 uint8_t ov7670_get(uint8_t reg) {
     uint8_t data = 0;
