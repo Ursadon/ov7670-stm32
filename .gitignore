@@ -17,4 +17,4 @@
 *.app
 
 # Compilation folder
-debug
+debug/
