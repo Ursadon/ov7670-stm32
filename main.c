@@ -83,7 +83,13 @@ void usartSendWord(uint16_t word) {
 	usPrintChar(b1);
 	usPrintChar(b2);
 }
-
+void delay(unsigned int ms) {
+	//4694 = 1 ms
+	while (ms > 1) {
+		ms--;
+		asm("nop");
+	}
+}
 static ErrorStatus MCO_init(void) {
 	ErrorStatus status = ERROR;
 	GPIO_InitTypeDef GPIO_InitStructure;
@@ -97,24 +103,21 @@ static ErrorStatus MCO_init(void) {
 	GPIO_Init(GPIOC, &GPIO_InitStructure);
 
 	RCC_MCO2Config(RCC_MCO2Source_PLLCLK, RCC_MCO2Div_4);
+
+	delay(9999);
 	return (status);
 }
 
-void delay(unsigned int ms) {
-	//4694 = 1 ms
-	while (ms > 1) {
-		ms--;
-		asm("nop");
-	}
-}
+
 
 int main() {
 	SystemInit();
 	usart_init();
-	I2CInit();
 	MCO_init();
+	I2CInit();
+	ov7670_init();
 	DCMI_init();
-    ov7670_init();
+	DMA_init();
 	unsigned int datachar[8] = { 0, 0, 0, 0, 0, 0, 0, 0 }, it = 0, cmd, arg,
 			data, jk;
 	while (1) {
@@ -135,6 +138,7 @@ int main() {
 				case '1':
 					DCMI_Cmd(ENABLE);
 					DCMI_CaptureCmd(ENABLE);
+					DMA_Cmd(DMA_CameraToRAM_Stream, ENABLE);
 					it = 0;
 					break;
 				case '2':
@@ -172,6 +176,7 @@ void DCMI_IRQHandler(void) {
 		__enable_irq();
 		DCMI_Cmd(DISABLE);
 		DCMI_CaptureCmd(DISABLE);
+		DMA_Cmd(DMA_CameraToRAM_Stream, DISABLE);
 		num_dcmi_frame++;
 		DCMI_ClearITPendingBit(DCMI_IT_FRAME);
 		//printf(" lines: %d\n\r",num_dcmi_line);

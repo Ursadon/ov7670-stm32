@@ -16,7 +16,7 @@ void delayx(unsigned int ms) {
 	}
 }
 uint8_t ov7670_get(uint8_t reg) {
-    uint8_t data = 0;
+	uint8_t data = 0;
 	I2C_start(I2C2, 0x42, I2C_Direction_Transmitter);
 	I2C_write(I2C2, reg);
 	I2C_stop(I2C2);
@@ -37,11 +37,11 @@ uint8_t ov7670_set(uint8_t reg, uint8_t data) {
 	return 0;
 }
 
-int ov7670_init(){
-    int hstart = 456, hstop = 24, vstart = 14, vstop = 494;
+int ov7670_init() {
+	int hstart = 456, hstop = 24, vstart = 14, vstop = 494;
 	unsigned char v;
-    
-    if (ov7670_get(REG_PID) != 0x76) {
+
+	if (ov7670_get(REG_PID) != 0x76) {
 		return 1;
 	}
 	ov7670_set(REG_COM7, COM7_RESET); /* reset to default values */
@@ -59,7 +59,7 @@ int ov7670_init(){
 	v = ov7670_get(REG_VREF);
 	v = (v & 0xf0) | ((vstop & 0x3) << 2) | (vstart & 0x3);
 	ov7670_set(REG_VREF, v);
-    
+
 	ov7670_set(REG_COM3, COM3_SCALEEN | COM3_DCWEN);
 	ov7670_set(REG_COM14, COM14_DCWEN | 0x01);
 	ov7670_set(0x73, 0xf1);
@@ -180,18 +180,72 @@ int ov7670_init(){
 	ov7670_set(0x6a, 0x40);
 	ov7670_set(REG_BLUE, 0x40);
 	ov7670_set(REG_RED, 0x60);
-	ov7670_set(REG_COM8, COM8_FASTAEC | COM8_AECSTEP | COM8_BFILT | COM8_AGC | COM8_AEC | COM8_AWB);
-    return 0;
+	ov7670_set(REG_COM8,
+			COM8_FASTAEC | COM8_AECSTEP | COM8_BFILT | COM8_AGC | COM8_AEC
+					| COM8_AWB);
+	return 0;
+}
+void DMA_init() {
+	DMA_InitTypeDef DMA_InitStructure;
+	__IO
+	uint32_t Timeout = HSE_STARTUP_TIMEOUT;
+
+	RCC_AHB1PeriphClockCmd(DMA_Camera_STREAM_CLOCK, ENABLE);
+	DMA_DeInit(DMA_CameraToRAM_Stream);
+	while (DMA_GetCmdStatus(DMA_CameraToRAM_Stream) != DISABLE) {
+	}
+	DMA_InitStructure.DMA_Channel = DMA_Camera_Channel;
+	DMA_InitStructure.DMA_PeripheralBaseAddr = DCMI_DR_ADDRESS;
+	DMA_InitStructure.DMA_Memory0BaseAddr = (uint32_t) RAM_Buffer;
+	DMA_InitStructure.DMA_DIR = DMA_DIR_PeripheralToMemory;
+	DMA_InitStructure.DMA_BufferSize = picture_x * picture_y * 2 / 4;
+	DMA_InitStructure.DMA_PeripheralInc = DMA_PeripheralInc_Disable;
+	DMA_InitStructure.DMA_MemoryInc = DMA_MemoryInc_Enable;
+	DMA_InitStructure.DMA_PeripheralDataSize = DMA_PeripheralDataSize_Word;
+	DMA_InitStructure.DMA_MemoryDataSize = DMA_MemoryDataSize_HalfWord;
+	DMA_InitStructure.DMA_Mode = DMA_Mode_Circular;
+	DMA_InitStructure.DMA_Priority = DMA_Priority_High;
+	DMA_InitStructure.DMA_FIFOMode = DMA_FIFOMode_Enable;
+	DMA_InitStructure.DMA_FIFOThreshold = DMA_FIFOThreshold_Full;
+	DMA_InitStructure.DMA_MemoryBurst = DMA_MemoryBurst_Single;
+	DMA_InitStructure.DMA_PeripheralBurst = DMA_PeripheralBurst_Single;
+	DMA_Init(DMA_CameraToRAM_Stream, &DMA_InitStructure);
+
+	Timeout = HSE_STARTUP_TIMEOUT;
+	while ((DMA_GetCmdStatus(DMA_CameraToRAM_Stream) != ENABLE)
+			&& (Timeout-- > 0)) {
+	}
+
+	// Check if a timeout condition occurred
+	if (Timeout == 0) {
+		// Manage the error: to simplify the code enter an infinite loop
+		while (1) {
+			// Dopísa program
+		}
+	}
+	NVIC_InitTypeDef NVIC_InitStructure;
+	NVIC_InitStructure.NVIC_IRQChannel = DCMI_IRQn;
+	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0;
+	NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;
+	NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
+	NVIC_Init(&NVIC_InitStructure);
+
+	DCMI_ITConfig(DCMI_IT_FRAME, ENABLE);
+	DCMI_ITConfig(DCMI_IT_VSYNC, ENABLE);
+	DCMI_ITConfig(DCMI_IT_LINE, ENABLE);
+	// Enable DCMI Capture mode
+	DCMI_Cmd(ENABLE);
+	DCMI_CaptureCmd(ENABLE);
+
+	// DMA Stream enable
+	DMA_Cmd(DMA_CameraToRAM_Stream, ENABLE);
 }
 
 void DCMI_init() {
 	GPIO_InitTypeDef GPIO_InitStructure;
-	DMA_InitTypeDef DMA_InitStructure;
+
 	DCMI_InitTypeDef DCMI_InitStructure;
 	//DCMI_CROPInitTypeDef DCMI_CROPInitStructure;
-
-	__IO
-	uint32_t Timeout = HSE_STARTUP_TIMEOUT;
 
 	RCC_AHB1PeriphClockCmd(
 			RCC_AHB1Periph_GPIOA | RCC_AHB1Periph_GPIOB | RCC_AHB1Periph_GPIOC
@@ -253,54 +307,4 @@ void DCMI_init() {
 	DCMI_InitStructure.DCMI_SynchroMode = DCMI_SynchroMode_Hardware;
 	DCMI_InitStructure.DCMI_VSPolarity = DCMI_VSPolarity_High;
 	DCMI_Init(&DCMI_InitStructure);
-
-	RCC_AHB1PeriphClockCmd(DMA_Camera_STREAM_CLOCK, ENABLE);
-	DMA_DeInit(DMA_CameraToRAM_Stream);
-	while (DMA_GetCmdStatus(DMA_CameraToRAM_Stream) != DISABLE) {
-	}
-	DMA_InitStructure.DMA_Channel = DMA_Camera_Channel;
-	DMA_InitStructure.DMA_PeripheralBaseAddr = DCMI_DR_ADDRESS;
-	DMA_InitStructure.DMA_Memory0BaseAddr = (uint32_t) RAM_Buffer;
-	DMA_InitStructure.DMA_DIR = DMA_DIR_PeripheralToMemory;
-	DMA_InitStructure.DMA_BufferSize = picture_x * picture_y * 2 / 4;
-	DMA_InitStructure.DMA_PeripheralInc = DMA_PeripheralInc_Disable;
-	DMA_InitStructure.DMA_MemoryInc = DMA_MemoryInc_Enable;
-	DMA_InitStructure.DMA_PeripheralDataSize = DMA_PeripheralDataSize_Word;
-	DMA_InitStructure.DMA_MemoryDataSize = DMA_MemoryDataSize_HalfWord;
-	DMA_InitStructure.DMA_Mode = DMA_Mode_Circular;
-	DMA_InitStructure.DMA_Priority = DMA_Priority_High;
-	DMA_InitStructure.DMA_FIFOMode = DMA_FIFOMode_Enable;
-	DMA_InitStructure.DMA_FIFOThreshold = DMA_FIFOThreshold_Full;
-	DMA_InitStructure.DMA_MemoryBurst = DMA_MemoryBurst_Single;
-	DMA_InitStructure.DMA_PeripheralBurst = DMA_PeripheralBurst_Single;
-	DMA_Init(DMA_CameraToRAM_Stream, &DMA_InitStructure);
-
-	Timeout = HSE_STARTUP_TIMEOUT;
-	while ((DMA_GetCmdStatus(DMA_CameraToRAM_Stream) != ENABLE)
-			&& (Timeout-- > 0)) {
-	}
-
-	// Check if a timeout condition occurred
-	if (Timeout == 0) {
-		// Manage the error: to simplify the code enter an infinite loop
-		while (1) {
-			// Dopísa program
-		}
-	}
-	NVIC_InitTypeDef NVIC_InitStructure;
-	NVIC_InitStructure.NVIC_IRQChannel = DCMI_IRQn;
-	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0;
-	NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;
-	NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
-	NVIC_Init(&NVIC_InitStructure);
-
-	DCMI_ITConfig(DCMI_IT_FRAME, ENABLE);
-	DCMI_ITConfig(DCMI_IT_VSYNC, ENABLE);
-	DCMI_ITConfig(DCMI_IT_LINE, ENABLE);
-	// Enable DCMI Capture mode
-	DCMI_Cmd(ENABLE);
-	DCMI_CaptureCmd(ENABLE);
-
-	// DMA Stream enable
-	DMA_Cmd(DMA_CameraToRAM_Stream, ENABLE);
 }
