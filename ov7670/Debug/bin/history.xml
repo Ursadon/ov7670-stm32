@@ -1,22 +1,22 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <history>
-   <processor signature="4.6.2 -mcpu=cortex-m4 -mthumb -g -nostartfiles -Map=ov7670.map -O0 --gc-sections -LE:\dev\CoIDE\configuration\ProgramData\ov7670 -TE:\dev\CoIDE\configuration\ProgramData\ov7670/arm-gcc-link.ld -g">
-      <target file="ov7670.elf" lastModified="13e6b1947d1">
-         <source file="..\obj\i2c.o" lastModified="13e6b194412"/>
-         <source file="..\obj\stm32f4xx_usart.o" lastModified="13e6b0366ca"/>
-         <source file="..\obj\startup_stm32f4xx.o" lastModified="13e6b03686e"/>
-         <source file="..\obj\main.o" lastModified="13e6b036a3d"/>
-         <source file="..\obj\stm32f4xx_rcc.o" lastModified="13e6b036c17"/>
-         <source file="..\obj\printf.o" lastModified="13e6b036df4"/>
-         <source file="..\obj\stm32f4xx_dcmi.o" lastModified="13e6b036fb3"/>
-         <source file="..\obj\stm32f4xx_gpio.o" lastModified="13e6b03717f"/>
-         <source file="..\obj\system_stm32f4xx.o" lastModified="13e6b03733f"/>
-         <source file="..\obj\syscalls.o" lastModified="13e6b0374f9"/>
-         <source file="..\obj\stm32f4xx_dma.o" lastModified="13e6b0376c0"/>
-         <source file="..\obj\stm32f4xx_i2c.o" lastModified="13e6b0378a2"/>
-         <source file="..\obj\misc.o" lastModified="13e6b037a59"/>
-         <source file="..\obj\ov7670.o" lastModified="13e6b16e435"/>
-         <source file="..\obj\stm32f4xx_tim.o" lastModified="13e6b037e44"/>
+   <processor signature="4.6.2 -mcpu=cortex-m4 -mthumb -g -nostartfiles -Map=ov7670.map -O1 --gc-sections -LE:\dev\CoIDE\configuration\ProgramData\ov7670 -TE:\dev\CoIDE\configuration\ProgramData\ov7670/arm-gcc-link.ld -g">
+      <target file="ov7670.elf" lastModified="13e6b1ad8f5">
+         <source file="..\obj\i2c.o" lastModified="13e6b1ab959"/>
+         <source file="..\obj\stm32f4xx_usart.o" lastModified="13e6b1abb4f"/>
+         <source file="..\obj\startup_stm32f4xx.o" lastModified="13e6b1abd0a"/>
+         <source file="..\obj\main.o" lastModified="13e6b1abefd"/>
+         <source file="..\obj\stm32f4xx_rcc.o" lastModified="13e6b1ac10f"/>
+         <source file="..\obj\printf.o" lastModified="13e6b1ac31d"/>
+         <source file="..\obj\stm32f4xx_dcmi.o" lastModified="13e6b1ac518"/>
+         <source file="..\obj\stm32f4xx_gpio.o" lastModified="13e6b1ac6fd"/>
+         <source file="..\obj\system_stm32f4xx.o" lastModified="13e6b1ac8f4"/>
+         <source file="..\obj\syscalls.o" lastModified="13e6b1acad2"/>
+         <source file="..\obj\stm32f4xx_dma.o" lastModified="13e6b1accd5"/>
+         <source file="..\obj\stm32f4xx_i2c.o" lastModified="13e6b1acee9"/>
+         <source file="..\obj\misc.o" lastModified="13e6b1ad0c0"/>
+         <source file="..\obj\ov7670.o" lastModified="13e6b1ad2cf"/>
+         <source file="..\obj\stm32f4xx_tim.o" lastModified="13e6b1ad53d"/>
       </target>
    </processor>
 </history>

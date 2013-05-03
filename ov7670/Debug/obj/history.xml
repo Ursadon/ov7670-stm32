@@ -1,49 +1,49 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <history>
-   <processor signature="arm-none-eabi-gcc noversion nomachine -mcpu=cortex-m4 -mthumb -Wall -ffunction-sections -g -O0 -c -DSTM32F407VG -DSTM32F4XX -DUSE_STDPERIPH_DRIVER -D__ASSEMBLY__ -I..\..\..\..\..\Dropbox\Priv\Projects\ov7670-stm32\drivers\ov7670 -I..\..\..\..\..\Dropbox\Priv\Projects\ov7670-stm32\cmsis_lib\include -I..\..\..\..\..\Dropbox\Priv\Projects\ov7670-stm32\cmsis_boot -I..\..\..\..\..\Dropbox\Priv\Projects\ov7670-stm32 -I..\..\..\..\..\Dropbox\Priv\Projects\ov7670-stm32\drivers\i2c -I..\..\..\..\..\Dropbox\Priv\Projects -I..\..\..\..\..\Dropbox\Priv\Projects\ov7670-stm32\cmsis_lib -I..\..\..\..\..\Dropbox\Priv\Projects\ov7670-stm32\drivers -I..\..\..\..\..\Dropbox\Priv\Projects\ov7670-stm32\cmsis">
-      <target file="syscalls.o" lastModified="13e6b0374f9">
+   <processor signature="arm-none-eabi-gcc noversion nomachine -mcpu=cortex-m4 -mthumb -Wall -ffunction-sections -g -O1 -c -DSTM32F407VG -DSTM32F4XX -DUSE_STDPERIPH_DRIVER -D__ASSEMBLY__ -I..\..\..\..\..\Dropbox\Priv\Projects\ov7670-stm32\drivers\ov7670 -I..\..\..\..\..\Dropbox\Priv\Projects\ov7670-stm32\cmsis_lib\include -I..\..\..\..\..\Dropbox\Priv\Projects\ov7670-stm32\cmsis_boot -I..\..\..\..\..\Dropbox\Priv\Projects\ov7670-stm32 -I..\..\..\..\..\Dropbox\Priv\Projects\ov7670-stm32\drivers\i2c -I..\..\..\..\..\Dropbox\Priv\Projects -I..\..\..\..\..\Dropbox\Priv\Projects\ov7670-stm32\cmsis_lib -I..\..\..\..\..\Dropbox\Priv\Projects\ov7670-stm32\drivers -I..\..\..\..\..\Dropbox\Priv\Projects\ov7670-stm32\cmsis">
+      <target file="syscalls.o" lastModified="13e6b1acad2">
          <source file="..\..\..\syscalls\syscalls.c" lastModified="13e2522089a"/>
       </target>
-      <target file="stm32f4xx_gpio.o" lastModified="13e6b03717f">
+      <target file="stm32f4xx_gpio.o" lastModified="13e6b1ac6fd">
          <source file="..\..\..\cmsis_lib\source\stm32f4xx_gpio.c" lastModified="13e25214e00"/>
       </target>
-      <target file="stm32f4xx_dma.o" lastModified="13e6b0376c0">
+      <target file="stm32f4xx_dma.o" lastModified="13e6b1accd5">
          <source file="..\..\..\cmsis_lib\source\stm32f4xx_dma.c" lastModified="13e25213fcf"/>
       </target>
-      <target file="stm32f4xx_tim.o" lastModified="13e6b037e44">
+      <target file="stm32f4xx_tim.o" lastModified="13e6b1ad53d">
          <source file="..\..\..\cmsis_lib\source\stm32f4xx_tim.c" lastModified="13e68ffef22"/>
       </target>
-      <target file="ov7670.o" lastModified="13e6b16e435">
+      <target file="ov7670.o" lastModified="13e6b1ad2cf">
          <source file="..\..\..\drivers\ov7670\ov7670.c" lastModified="13e6b16df13"/>
       </target>
-      <target file="printf.o" lastModified="13e6b036df4">
-         <source file="..\..\..\stdio\printf.c" lastModified="13e25269b84"/>
-      </target>
-      <target file="system_stm32f4xx.o" lastModified="13e6b03733f">
+      <target file="system_stm32f4xx.o" lastModified="13e6b1ac8f4">
          <source file="..\..\..\cmsis_boot\system_stm32f4xx.c" lastModified="13e69a4ffe4"/>
       </target>
-      <target file="i2c.o" lastModified="13e6b194412">
-         <source file="..\..\..\drivers\i2c\i2c.c" lastModified="13e6b193eea"/>
+      <target file="printf.o" lastModified="13e6b1ac31d">
+         <source file="..\..\..\stdio\printf.c" lastModified="13e25269b84"/>
       </target>
-      <target file="stm32f4xx_i2c.o" lastModified="13e6b0378a2">
+      <target file="stm32f4xx_i2c.o" lastModified="13e6b1acee9">
          <source file="..\..\..\cmsis_lib\source\stm32f4xx_i2c.c" lastModified="13e25217349"/>
       </target>
-      <target file="startup_stm32f4xx.o" lastModified="13e6b03686e">
+      <target file="startup_stm32f4xx.o" lastModified="13e6b1abd0a">
          <source file="..\..\..\cmsis_boot\startup\startup_stm32f4xx.c" lastModified="13e25213fd4"/>
       </target>
-      <target file="stm32f4xx_usart.o" lastModified="13e6b0366ca">
+      <target file="i2c.o" lastModified="13e6b1ab959">
+         <source file="..\..\..\drivers\i2c\i2c.c" lastModified="13e6b193eea"/>
+      </target>
+      <target file="stm32f4xx_usart.o" lastModified="13e6b1abb4f">
          <source file="..\..\..\cmsis_lib\source\stm32f4xx_usart.c" lastModified="13e25215e4f"/>
       </target>
-      <target file="main.o" lastModified="13e6b036a3d">
+      <target file="main.o" lastModified="13e6b1abefd">
          <source file="..\..\..\main.c" lastModified="13e6b035ab1"/>
       </target>
-      <target file="stm32f4xx_dcmi.o" lastModified="13e6b036fb3">
+      <target file="stm32f4xx_dcmi.o" lastModified="13e6b1ac518">
          <source file="..\..\..\cmsis_lib\source\stm32f4xx_dcmi.c" lastModified="13e257847cd"/>
       </target>
-      <target file="stm32f4xx_rcc.o" lastModified="13e6b036c17">
+      <target file="stm32f4xx_rcc.o" lastModified="13e6b1ac10f">
          <source file="..\..\..\cmsis_lib\source\stm32f4xx_rcc.c" lastModified="13e25213fe1"/>
       </target>
-      <target file="misc.o" lastModified="13e6b037a59">
+      <target file="misc.o" lastModified="13e6b1ad0c0">
          <source file="..\..\..\cmsis_lib\source\misc.c" lastModified="13e2521b237"/>
       </target>
    </processor>
