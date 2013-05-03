@@ -2,6 +2,7 @@
 #include "stm32f4xx_usart.h"
 #include "stm32f4xx_gpio.h"
 #include "stm32f4xx_rcc.h"
+#include "stm32f4xx_dma.h"
 #include "stm32f4xx_i2c.h"
 #include "stm32f4xx_tim.h"
 #include "stm32f4xx_dcmi.h"
@@ -153,49 +154,58 @@ void PWM_init(void) {
 	TIM_Cmd(TIM1, ENABLE);
 	TIM_CtrlPWMOutputs(TIM1, ENABLE);
 }
-void vVoltageMain(void *pvParameters) {
-	GPIO_InitTypeDef  GPIO_InitStructure;
+void vLED(void *pvParameters) {
+	usart_init();
+
+	GPIO_InitTypeDef GPIO_InitStructure;
 	/* GPIOD Periph clock enable */
 	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOD, ENABLE);
 
 	/* Configure PD12, PD13, PD14 and PD15 in output pushpull mode */
-	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_12 | GPIO_Pin_13| GPIO_Pin_14| GPIO_Pin_15;
+	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_12 | GPIO_Pin_13 | GPIO_Pin_14
+			| GPIO_Pin_15;
 	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_OUT;
 	GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_100MHz;
 	GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_NOPULL;
 	GPIO_Init(GPIOD, &GPIO_InitStructure);
 	for (;;) {
-	    GPIO_SetBits(GPIOD, GPIO_Pin_12);
-	    vTaskDelay(1000);
-	    GPIO_SetBits(GPIOD, GPIO_Pin_13);
-	    vTaskDelay(1000);
-	    GPIO_SetBits(GPIOD, GPIO_Pin_14);
-	    vTaskDelay(1000);
-	    GPIO_SetBits(GPIOD, GPIO_Pin_15);
-	    vTaskDelay(1000);
-	    GPIO_ResetBits(GPIOD, GPIO_Pin_12|GPIO_Pin_13|GPIO_Pin_14|GPIO_Pin_15);
-	    vTaskDelay(1000);
+		GPIO_SetBits(GPIOD, GPIO_Pin_12);
+		vTaskDelay(500);
+		GPIO_SetBits(GPIOD, GPIO_Pin_13);
+		vTaskDelay(500);
+		GPIO_SetBits(GPIOD, GPIO_Pin_14);
+		vTaskDelay(500);
+		GPIO_SetBits(GPIOD, GPIO_Pin_15);
+		vTaskDelay(500);
+		GPIO_ResetBits(GPIOD,
+				GPIO_Pin_12 | GPIO_Pin_13 | GPIO_Pin_14 | GPIO_Pin_15);
+		vTaskDelay(500);
 	}
 }
-int main() {
-	SystemInit();
-//	speed = 36;
-//	PWM_init();
+int x = 0;
+void vGetPicture(void *pvParameters) {
+	uint16_t i;
 
-	usart_init();
 	MCO_init();
 	I2CInit();
 	ov7670_init();
 	DCMI_init();
 	DMA_init();
-	xTaskCreate( vVoltageMain, ( signed char * ) "vVoltageMain",
-			configMINIMAL_STACK_SIZE, NULL, 0, ( xTaskHandle * ) NULL);
-	vTaskStartScheduler();
-	unsigned int datachar[8] = { 0, 0, 0, 0, 0, 0, 0, 0 }, it = 0, cmd, arg,
-			data, jk;
-	while (1) {
-		while (USART_GetFlagStatus(USART2, USART_IT_RXNE) != RESET) {
+	for (;;) {
+		if (x == 1) {
+			for (i = 0; i < picture_x * picture_y; i++)
+				usartSendWord(RAM_Buffer[i + 2]);
+			x = 0;
+		}
+		taskYIELD();
+	}
+}
+void vScanUsart(void *pvParameters) {
+	static unsigned int datachar[8] = { 0, 0, 0, 0, 0, 0, 0, 0 }, it = 0, cmd,
+			arg, data, jk;
+	for (;;) {
+		if (USART_GetFlagStatus(USART2, USART_IT_RXNE) != RESET) {
 			it++;
 			if (it == 8) {
 				it = 0;
@@ -230,10 +240,26 @@ int main() {
 					datachar[jk] = 0;
 				}
 			}
+		}
+		taskYIELD();
+	}
+}
+
+int main() {
+	SystemInit();
+//	speed = 36;
+//	PWM_init();
+
+	xTaskCreate( vLED, ( signed char * ) "vLED", configMINIMAL_STACK_SIZE, NULL,
+			0, ( xTaskHandle * ) NULL);
+	xTaskCreate( vGetPicture, ( signed char * ) "vGetPicture",
+			configMINIMAL_STACK_SIZE, NULL, 0, ( xTaskHandle * ) NULL);
+	xTaskCreate( vScanUsart, ( signed char * ) "vScanUsart",
+			configMINIMAL_STACK_SIZE, NULL, 0, ( xTaskHandle * ) NULL);
+	vTaskStartScheduler();
 //			speed =  USART_ReceiveData(USART2);
 //			PWM_init();
-		}
-	}
+	return 0;
 }
 
 int num_dcmi = 0;
@@ -243,13 +269,8 @@ int num_dcmi_line = 0;
 
 void DCMI_IRQHandler(void) {
 	num_dcmi++;
-
-	uint16_t i;
 	if (DCMI_GetITStatus(DCMI_IT_FRAME)) {
-		__disable_irq();
-		for (i = 0; i < picture_x * picture_y; i++)
-			usartSendWord(RAM_Buffer[i + 2]);
-		__enable_irq();
+		x = 1;
 		DCMI_Cmd(DISABLE);
 		DCMI_CaptureCmd(DISABLE);
 		DMA_Cmd(DMA_CameraToRAM_Stream, DISABLE);
