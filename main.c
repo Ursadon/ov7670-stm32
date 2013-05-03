@@ -192,6 +192,7 @@ void vGetPicture(void *pvParameters) {
 	ov7670_init();
 	DCMI_init();
 	DMA_init();
+
 	for (;;) {
 		if (x == 1) {
 			for (i = 0; i < picture_x * picture_y; i++)
@@ -202,8 +203,8 @@ void vGetPicture(void *pvParameters) {
 	}
 }
 void vScanUsart(void *pvParameters) {
-	static unsigned int datachar[8] = { 0, 0, 0, 0, 0, 0, 0, 0 }, it = 0, cmd,
-			arg, data, jk;
+	static unsigned int datachar[8] = { 0, 0, 0, 0, 0, 0, 0, 0 }, it = 0, cmd;
+	static unsigned char arg, data, jk;
 	for (;;) {
 		if (USART_GetFlagStatus(USART2, USART_IT_RXNE) != RESET) {
 			it++;
@@ -220,7 +221,6 @@ void vScanUsart(void *pvParameters) {
 				data = datachar[3];
 				switch (cmd) {
 				case '1':
-					DCMI_Cmd(ENABLE);
 					DCMI_CaptureCmd(ENABLE);
 					DMA_Cmd(DMA_CameraToRAM_Stream, ENABLE);
 					it = 0;
@@ -271,8 +271,6 @@ void DCMI_IRQHandler(void) {
 	num_dcmi++;
 	if (DCMI_GetITStatus(DCMI_IT_FRAME)) {
 		x = 1;
-		DCMI_Cmd(DISABLE);
-		DCMI_CaptureCmd(DISABLE);
 		DMA_Cmd(DMA_CameraToRAM_Stream, DISABLE);
 		num_dcmi_frame++;
 		DCMI_ClearITPendingBit(DCMI_IT_FRAME);

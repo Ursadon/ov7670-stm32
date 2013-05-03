@@ -299,7 +299,7 @@ void DCMI_init() {
 	// Reinitialize
 	DCMI_DeInit();
 
-	DCMI_InitStructure.DCMI_CaptureMode = DCMI_CaptureMode_Continuous;
+	DCMI_InitStructure.DCMI_CaptureMode = DCMI_CaptureMode_SnapShot;
 	DCMI_InitStructure.DCMI_CaptureRate = DCMI_CaptureRate_All_Frame;
 	DCMI_InitStructure.DCMI_ExtendedDataMode = DCMI_ExtendedDataMode_8b;
 	DCMI_InitStructure.DCMI_HSPolarity = DCMI_HSPolarity_Low;
