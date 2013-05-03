@@ -13,8 +13,12 @@
 
 #include "FreeRTOS.h"
 #include "task.h"
+#include "semphr.h"
 #include "misc.h"
 #include <stdio.h>
+
+static uint32_t speed = 10;
+xSemaphoreHandle xSemPictureReady = NULL;
 
 void usart_init(void) {
 	/* USARTx configured as follow:
@@ -70,6 +74,7 @@ void usart_init(void) {
 	USART_Cmd(USART2, ENABLE);
 
 }
+
 void usPrintChar(char c) {
 	uint8_t ch;
 	ch = c;
@@ -81,6 +86,7 @@ void usPrintChar(char c) {
 	while (USART_GetFlagStatus(USART2, USART_FLAG_TC) == RESET) {
 	}
 }
+
 void usartSendWord(uint16_t word) {
 	uint8_t b1 = word & 0xFF;
 	uint8_t b2 = word >> 8;
@@ -113,7 +119,7 @@ static ErrorStatus MCO_init(void) {
 	delay(9999);
 	return (status);
 }
-static uint32_t speed = 10;
+
 void PWM_init(void) {
 	TIM_TimeBaseInitTypeDef TIM_TimeBaseStructure;
 	TIM_OCInitTypeDef TIM_OCInitStructure;
@@ -156,12 +162,8 @@ void PWM_init(void) {
 }
 void vLED(void *pvParameters) {
 	usart_init();
-
 	GPIO_InitTypeDef GPIO_InitStructure;
-	/* GPIOD Periph clock enable */
 	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOD, ENABLE);
-
-	/* Configure PD12, PD13, PD14 and PD15 in output pushpull mode */
 	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_12 | GPIO_Pin_13 | GPIO_Pin_14
 			| GPIO_Pin_15;
 	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_OUT;
@@ -169,6 +171,7 @@ void vLED(void *pvParameters) {
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_100MHz;
 	GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_NOPULL;
 	GPIO_Init(GPIOD, &GPIO_InitStructure);
+
 	for (;;) {
 		GPIO_SetBits(GPIOD, GPIO_Pin_12);
 		vTaskDelay(500);
@@ -183,7 +186,7 @@ void vLED(void *pvParameters) {
 		vTaskDelay(500);
 	}
 }
-int x = 0;
+
 void vGetPicture(void *pvParameters) {
 	uint16_t i;
 
@@ -193,15 +196,17 @@ void vGetPicture(void *pvParameters) {
 	DCMI_init();
 	DMA_init();
 
+	vSemaphoreCreateBinary(xSemPictureReady);
 	for (;;) {
-		if (x == 1) {
-			for (i = 0; i < picture_x * picture_y; i++)
+		if (xSemaphoreTake(xSemPictureReady, (portTickType) 1) == pdTRUE) {
+			for (i = 0; i < picture_x * picture_y; i++) {
 				usartSendWord(RAM_Buffer[i + 2]);
-			x = 0;
+			}
 		}
 		taskYIELD();
 	}
 }
+
 void vScanUsart(void *pvParameters) {
 	static unsigned int datachar[8] = { 0, 0, 0, 0, 0, 0, 0, 0 }, it = 0, cmd;
 	static unsigned char arg, data, jk;
@@ -257,39 +262,17 @@ int main() {
 	xTaskCreate( vScanUsart, ( signed char * ) "vScanUsart",
 			configMINIMAL_STACK_SIZE, NULL, 0, ( xTaskHandle * ) NULL);
 	vTaskStartScheduler();
-//			speed =  USART_ReceiveData(USART2);
-//			PWM_init();
 	return 0;
 }
 
-int num_dcmi = 0;
-int num_dcmi_frame = 0;
-int num_dcmi_vsync = 0;
-int num_dcmi_line = 0;
-
 void DCMI_IRQHandler(void) {
-	num_dcmi++;
 	if (DCMI_GetITStatus(DCMI_IT_FRAME)) {
-		x = 1;
+		xSemaphoreGiveFromISR( xSemPictureReady, NULL );
 		DMA_Cmd(DMA_CameraToRAM_Stream, DISABLE);
-		num_dcmi_frame++;
 		DCMI_ClearITPendingBit(DCMI_IT_FRAME);
-		//printf(" lines: %d\n\r",num_dcmi_line);
 	} else if (DCMI_GetFlagStatus(DCMI_FLAG_VSYNCRI) == SET) {
-		num_dcmi_vsync++;
 		DCMI_ClearFlag(DCMI_FLAG_VSYNCRI);
-		//printf(" lines: %d\n\r",num_dcmi_line);
-//		printf(" num_dcmi: %d\n\r",num_dcmi);
-//		printf(" num_dcmi_frame: %d\n\r",num_dcmi_frame);
-//		printf(" num_dcmi_vsync: %d\n\r",num_dcmi_vsync);
-//		printf(" num_dcmi_line: %d\n\r",num_dcmi_line);
-//		printf(" =========================\n\r");
-		num_dcmi = 0;
-		num_dcmi_frame = 0;
-		num_dcmi_vsync = 0;
-		num_dcmi_line = 0;
 	} else if (DCMI_GetFlagStatus(DCMI_IT_LINE) == SET) {
-		num_dcmi_line++;
 		DCMI_ClearFlag(DCMI_IT_LINE);
 	}
 }

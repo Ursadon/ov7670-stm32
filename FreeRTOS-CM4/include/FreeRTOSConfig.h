@@ -11,7 +11,7 @@
 #define configUSE_TICK_HOOK                         0
 #define configCPU_CLOCK_HZ                      ( ( unsigned long long ) 168000000 )
 #define configTICK_RATE_HZ                      ( ( portTickType ) 1000 )
-#define configMAX_PRIORITIES            ( ( unsigned portBASE_TYPE ) 5 )
+#define configMAX_PRIORITIES            ( ( unsigned portBASE_TYPE ) 16 )
 #define configMINIMAL_STACK_SIZE        ( ( unsigned short ) 120 )
 #define configTOTAL_HEAP_SIZE           ( ( size_t ) ( 3 * 1024 ) )
 #define configMAX_TASK_NAME_LEN         ( 32 )
@@ -21,9 +21,9 @@
 
 /* Co-routine definitions. */
 #define configUSE_CO_ROUTINES           0
-#define configMAX_CO_ROUTINE_PRIORITIES ( 2 )
+#define configMAX_CO_ROUTINE_PRIORITIES ( 3 )
 
-#define configUSE_MUTEXES                               0
+#define configUSE_MUTEXES                               1
 #define configUSE_COUNTING_SEMAPHORES   0
 #define configUSE_ALTERNATIVE_API               0
 #define configCHECK_FOR_STACK_OVERFLOW  0
