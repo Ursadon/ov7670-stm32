@@ -193,6 +193,7 @@ void DMA_init() {
 	RCC_AHB1PeriphClockCmd(DMA_Camera_STREAM_CLOCK, ENABLE);
 	DMA_DeInit(DMA_CameraToRAM_Stream);
 	while (DMA_GetCmdStatus(DMA_CameraToRAM_Stream) != DISABLE) {
+
 	}
 	DMA_InitStructure.DMA_Channel = DMA_Camera_Channel;
 	DMA_InitStructure.DMA_PeripheralBaseAddr = DCMI_DR_ADDRESS;
@@ -218,24 +219,10 @@ void DMA_init() {
 
 	// Check if a timeout condition occurred
 	if (Timeout == 0) {
-		// Manage the error: to simplify the code enter an infinite loop
+		// TODO: magae error
 		while (1) {
-			// Dopísa program
 		}
 	}
-	NVIC_InitTypeDef NVIC_InitStructure;
-	NVIC_InitStructure.NVIC_IRQChannel = DCMI_IRQn;
-	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0;
-	NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;
-	NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
-	NVIC_Init(&NVIC_InitStructure);
-
-	DCMI_ITConfig(DCMI_IT_FRAME, ENABLE);
-	DCMI_ITConfig(DCMI_IT_VSYNC, ENABLE);
-	DCMI_ITConfig(DCMI_IT_LINE, ENABLE);
-	// Enable DCMI Capture mode
-	DCMI_Cmd(ENABLE);
-	DCMI_CaptureCmd(ENABLE);
 
 	// DMA Stream enable
 	DMA_Cmd(DMA_CameraToRAM_Stream, ENABLE);
@@ -307,4 +294,15 @@ void DCMI_init() {
 	DCMI_InitStructure.DCMI_SynchroMode = DCMI_SynchroMode_Hardware;
 	DCMI_InitStructure.DCMI_VSPolarity = DCMI_VSPolarity_High;
 	DCMI_Init(&DCMI_InitStructure);
+	NVIC_InitTypeDef NVIC_InitStructure;
+	NVIC_InitStructure.NVIC_IRQChannel = DCMI_IRQn;
+	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0;
+	NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;
+	NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
+	NVIC_Init(&NVIC_InitStructure);
+
+	DCMI_ITConfig(DCMI_IT_FRAME, ENABLE);
+	// Enable DCMI Capture mode
+	DCMI_Cmd(ENABLE);
+	DCMI_CaptureCmd(ENABLE);
 }

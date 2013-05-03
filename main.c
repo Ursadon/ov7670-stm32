@@ -88,10 +88,20 @@ void usPrintChar(char c) {
 }
 
 void usartSendWord(uint16_t word) {
-	uint8_t b1 = word & 0xFF;
-	uint8_t b2 = word >> 8;
-	usPrintChar(b1);
-	usPrintChar(b2);
+	uint16_t data;
+	data = word;
+	uint8_t b1 = data & 0xFF;
+	uint8_t b2 = data >> 8;
+	USART_SendData(USART2, (uint8_t) b1);
+	while (USART_GetFlagStatus(USART2, USART_FLAG_TC) == RESET) {
+		taskYIELD();
+	}
+
+	USART_SendData(USART2, (uint8_t) b2);
+	while (USART_GetFlagStatus(USART2, USART_FLAG_TC) == RESET) {
+		taskYIELD();
+	}
+
 }
 
 void delay(unsigned int ms) {
@@ -161,7 +171,6 @@ void PWM_init(void) {
 	TIM_CtrlPWMOutputs(TIM1, ENABLE);
 }
 void vLED(void *pvParameters) {
-	usart_init();
 	GPIO_InitTypeDef GPIO_InitStructure;
 	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOD, ENABLE);
 	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_12 | GPIO_Pin_13 | GPIO_Pin_14
@@ -190,12 +199,9 @@ void vLED(void *pvParameters) {
 void vGetPicture(void *pvParameters) {
 	uint16_t i;
 
-	MCO_init();
-	I2CInit();
-	ov7670_init();
-	DCMI_init();
-	DMA_init();
-
+	DCMI_CaptureCmd(ENABLE);
+	// TODO: fix workaround
+	DMA_Cmd(DMA_CameraToRAM_Stream, ENABLE);
 	vSemaphoreCreateBinary(xSemPictureReady);
 	for (;;) {
 		if (xSemaphoreTake(xSemPictureReady, (portTickType) 1) == pdTRUE) {
@@ -227,6 +233,7 @@ void vScanUsart(void *pvParameters) {
 				switch (cmd) {
 				case '1':
 					DCMI_CaptureCmd(ENABLE);
+					// TODO: fix workaround
 					DMA_Cmd(DMA_CameraToRAM_Stream, ENABLE);
 					it = 0;
 					break;
@@ -252,6 +259,17 @@ void vScanUsart(void *pvParameters) {
 
 int main() {
 	SystemInit();
+	// Booting...
+	usart_init();
+	MCO_init();
+	I2CInit();
+	ov7670_init();
+	DCMI_init();
+	DMA_init();
+
+
+	// Boot completed!
+
 //	speed = 36;
 //	PWM_init();
 
@@ -267,12 +285,9 @@ int main() {
 
 void DCMI_IRQHandler(void) {
 	if (DCMI_GetITStatus(DCMI_IT_FRAME)) {
-		xSemaphoreGiveFromISR( xSemPictureReady, NULL );
+		xSemaphoreGiveFromISR( xSemPictureReady, NULL);
+		// TODO: fix workaround
 		DMA_Cmd(DMA_CameraToRAM_Stream, DISABLE);
 		DCMI_ClearITPendingBit(DCMI_IT_FRAME);
-	} else if (DCMI_GetFlagStatus(DCMI_FLAG_VSYNCRI) == SET) {
-		DCMI_ClearFlag(DCMI_FLAG_VSYNCRI);
-	} else if (DCMI_GetFlagStatus(DCMI_IT_LINE) == SET) {
-		DCMI_ClearFlag(DCMI_IT_LINE);
 	}
 }
