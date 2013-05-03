@@ -17,15 +17,26 @@
 </editorArea>
 <editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="main.c" partName="main.c" path="E:/Dropbox/Priv/Projects/ov7670-stm32/main.c" title="main.c" tooltip="E:/Dropbox/Priv/Projects/ov7670-stm32/main.c" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/ov7670/main.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="6487" selectionTopPixel="2700"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="4026" selectionTopPixel="1725"/>
 </editor>
 </editors>
 <views>
 <view id="org.coocox.builder.ui.views.ProjectView" partName="Project">
-<viewState CommonNavigator.LINKING_ENABLED="0" horizontalPosition="0" org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets="0" verticalPosition="0">
+<viewState CommonNavigator.LINKING_ENABLED="0" horizontalPosition="0" org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets="0" verticalPosition="23">
 <expanded>
 <element path="/ov7670"/>
+<element path="/ov7670/cmsis"/>
+<element path="/ov7670/cmsis_boot"/>
+<element path="/ov7670/cmsis_lib"/>
+<element path="/ov7670/cmsis_lib/include"/>
+<element path="/ov7670/cmsis_lib/source"/>
+<element path="/ov7670/drivers"/>
+<element path="/ov7670/drivers/i2c"/>
+<element path="/ov7670/drivers/ov7670"/>
 </expanded>
+<selection>
+<element path="/ov7670/main.c"/>
+</selection>
 </viewState>
 </view>
 <view id="org.coocox.component.ui.ComponentView" partName="Components">
@@ -105,8 +116,13 @@
 </presentation>
 </folder>
 </info>
-<info part="org.coocox.builder.ui.exampleView" ratio="0.21966527" ratioLeft="420" ratioRight="1492" relationship="2" relative="org.eclipse.ui.internal.ViewStack@e18c25"/>
-<info folder="true" part="org.eclipse.ui.internal.ViewStack@1202ed6" ratio="0.71983916" ratioLeft="1074" ratioRight="418" relationship="2" relative="org.coocox.builder.ui.exampleView">
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@132c37e" ratio="0.21966527" ratioLeft="420" ratioRight="1492" relationship="2" relative="org.eclipse.ui.internal.ViewStack@e18c25">
+<folder appearance="2" expanded="2">
+<page content="org.coocox.builder.ui.exampleView" label="LabelNotFound"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
+</folder>
+</info>
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@1202ed6" ratio="0.71983916" ratioLeft="1074" ratioRight="418" relationship="2" relative="org.eclipse.ui.internal.ViewStack@132c37e">
 <folder activePageID="org.coocox.component.ui.Help" appearance="2" expanded="2">
 <page content="org.coocox.component.ui.Help" label="Help"/>
 <page content="org.eclipse.debug.ui.BreakpointView" label="LabelNotFound"/>
@@ -118,7 +134,7 @@
 </presentation>
 </folder>
 </info>
-<info part="org.eclipse.ui.editorss" ratio="0.4490446" ratioLeft="423" ratioRight="519" relationship="4" relative="org.coocox.builder.ui.exampleView"/>
+<info part="org.eclipse.ui.editorss" ratio="0.4490446" ratioLeft="423" ratioRight="519" relationship="4" relative="org.eclipse.ui.internal.ViewStack@132c37e"/>
 <info folder="true" part="org.eclipse.ui.internal.ViewStack@1b7f891" ratio="0.36942676" ratioLeft="348" ratioRight="594" relationship="4" relative="org.eclipse.ui.internal.ViewStack@e18c25">
 <folder activePageID="org.coocox.builder.ui.views.ProjectView" appearance="2" expanded="2">
 <page content="org.coocox.builder.ui.views.ProjectView" label="Project"/>
@@ -132,7 +148,6 @@
 </perspective>
 <perspective editorAreaTrimState="2" editorAreaVisible="1" fixed="0" version="0.016">
 <descriptor class="org.coocox.codebugger.configuration.ui.Perspective" id="org.coocox.codebugger.configuration.perspective" label="CoDebugger"/>
-<alwaysOnActionSet id="org.coocox.builder.ui.actionSet"/>
 <alwaysOnActionSet id="org.coocox.component.ui.actionSet"/>
 <alwaysOnActionSet id="org.coocox.welcome.ui.actionSet"/>
 <alwaysOnActionSet id="org.eclipse.search.searchActionSet"/>
@@ -143,42 +158,42 @@
 <alwaysOnActionSet id="org.eclipse.ui.actionSet.openFiles"/>
 <alwaysOnActionSet id="org.eclipse.debug.ui.breakpointActionSet"/>
 <alwaysOnActionSet id="org.eclipse.debug.ui.debugActionSet"/>
-<hide_menu_item_id id="org.coocox.builder.ui.newFile"/>
 <hide_menu_item_id id="org.coocox.builder.ui.newFolder"/>
-<hide_menu_item_id id="org.coocox.builder.ui.openFile"/>
+<hide_menu_item_id id="org.coocox.welcome.ui.action.repository"/>
 <hide_menu_item_id id="org.eclipse.ui.file.save"/>
-<hide_menu_item_id id="org.eclipse.ui.file.saveAs"/>
+<hide_menu_item_id id="org.eclipse.jdt.ui.refactoring.menu"/>
+<hide_menu_item_id id="org.coocox.builder.ui.rebuild"/>
 <hide_menu_item_id id="org.eclipse.ui.file.saveAll"/>
+<hide_menu_item_id id="org.coocox.builder.ui.openFile"/>
+<hide_menu_item_id id="org.eclipse.ui.file.saveAs"/>
 <hide_menu_item_id id="org.coocox.builder.rcp.projectMenu"/>
 <hide_menu_item_id id="org.coocox.builder.rcp.flashMenu"/>
-<hide_menu_item_id id="org.coocox.builder.ui.showHelpViewAction"/>
-<hide_menu_item_id id="org.coocox.builder.ui.showHelpViewAction1"/>
-<hide_menu_item_id id="org.coocox.builder.ui.showOutlineAction"/>
-<hide_menu_item_id id="org.coocox.builder.ui.showPeripheralsAction"/>
-<hide_menu_item_id id="org.coocox.builder.ui.builderDefaultLayout"/>
-<hide_menu_item_id id="org.coocox.component.ui.ShowRepositoryAction"/>
 <hide_menu_item_id id="org.coocox.builder.ui.debug"/>
-<hide_menu_item_id id="org.coocox.builder.ui.build"/>
-<hide_menu_item_id id="org.coocox.builder.ui.rebuild"/>
-<hide_menu_item_id id="org.eclipse.jdt.ui.refactoring.menu"/>
-<hide_menu_item_id id="org.eclipse.jdt.ui.source.menu"/>
+<hide_menu_item_id id="org.coocox.builder.ui.showHelpViewAction"/>
+<hide_menu_item_id id="org.coocox.builder.ui.newFile"/>
+<hide_menu_item_id id="org.coocox.builder.ui.showHelpViewAction1"/>
 <hide_menu_item_id id="org.coocox.builder.ui.actions.ConfigurationAction"/>
+<hide_menu_item_id id="org.coocox.builder.ui.builderDefaultLayout"/>
+<hide_menu_item_id id="org.eclipse.jdt.ui.source.menu"/>
+<hide_menu_item_id id="org.coocox.builder.ui.build"/>
+<hide_menu_item_id id="org.coocox.builder.ui.showOutlineAction"/>
 <hide_menu_item_id id="org.coocox.welcome.ui.action.welcome"/>
-<hide_menu_item_id id="org.coocox.welcome.ui.action.repository"/>
-<hide_toolbar_item_id id="org.coocox.builder.ui.newProject"/>
-<hide_toolbar_item_id id="org.coocox.builder.ui.newFile"/>
-<hide_toolbar_item_id id="org.eclipse.ui.file.save"/>
-<hide_toolbar_item_id id="org.coocox.component.ui.ShowRepositoryAction"/>
-<hide_toolbar_item_id id="org.coocox.builder.ui.build"/>
-<hide_toolbar_item_id id="org.coocox.builder.ui.rebuild"/>
-<hide_toolbar_item_id id="org.coocox.builder.ui.debug"/>
-<hide_toolbar_item_id id="org.coocox.codebugger.configuration.coideProgramDownloadAction"/>
-<hide_toolbar_item_id id="org.coocox.codebugger.configuration.coideFlashEraseAction"/>
+<hide_menu_item_id id="org.coocox.builder.ui.showPeripheralsAction"/>
+<hide_menu_item_id id="org.coocox.component.ui.ShowRepositoryAction"/>
 <hide_toolbar_item_id id="org.coocox.builder.ui.actions.TargetManageAction"/>
-<hide_toolbar_item_id id="org.coocox.builder.ui.actions.ConfigurationAction"/>
-<hide_toolbar_item_id id="org.coocox.welcome.ui.action.welcome"/>
+<hide_toolbar_item_id id="org.coocox.builder.ui.newProject"/>
 <hide_toolbar_item_id id="org.coocox.welcome.ui.action.repository"/>
+<hide_toolbar_item_id id="org.eclipse.ui.file.save"/>
+<hide_toolbar_item_id id="org.coocox.builder.ui.rebuild"/>
+<hide_toolbar_item_id id="org.coocox.codebugger.configuration.coideFlashEraseAction"/>
+<hide_toolbar_item_id id="org.coocox.builder.ui.debug"/>
+<hide_toolbar_item_id id="org.coocox.builder.ui.newFile"/>
+<hide_toolbar_item_id id="org.coocox.builder.ui.actions.ConfigurationAction"/>
 <hide_toolbar_item_id id="org.eclipse.ui.edit.text.toggleShowSelectedElementOnly"/>
+<hide_toolbar_item_id id="org.coocox.builder.ui.build"/>
+<hide_toolbar_item_id id="org.coocox.welcome.ui.action.welcome"/>
+<hide_toolbar_item_id id="org.coocox.component.ui.ShowRepositoryAction"/>
+<hide_toolbar_item_id id="org.coocox.codebugger.configuration.coideProgramDownloadAction"/>
 <view id="org.eclipse.ui.console.ConsoleView"/>
 <view id="org.eclipse.debug.ui.DebugView"/>
 <view id="org.coocox.codebugger.trace.ui.traceview"/>
@@ -228,167 +243,153 @@
 <workingSets/>
 <navigationHistory>
 <editors>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/FRTOS/main.c"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/FRTOS/stm_lib/src/stm32f10x_usart.c"/>
-<editor factoryID="org.coocox.builder.ui.persistent.PersistentElementFactory" id="org.coocox.builder.ui.editors.ConfigEditor">
-<org.coocox.builder.ui.editors.ConfigEditor horizontalPosition="0" subTagIndex="1" verticalPosition="24"/>
-</editor>
-<editor factoryID="org.coocox.builder.ui.persistent.PersistentElementFactory" id="org.coocox.builder.ui.editors.ConfigEditor">
-<org.coocox.builder.ui.editors.ConfigEditor/>
-</editor>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/FRTOS/main.c"/>
-<editor factoryID="org.coocox.builder.ui.persistent.PersistentElementFactory" id="org.coocox.builder.ui.editors.ConfigEditor">
-<org.coocox.builder.ui.editors.ConfigEditor horizontalPosition="0" subTagIndex="0" verticalPosition="0"/>
-</editor>
-<editor factoryID="org.coocox.builder.ui.persistent.PersistentElementFactory" id="org.coocox.builder.ui.editors.ConfigEditor">
-<org.coocox.builder.ui.editors.ConfigEditor horizontalPosition="0" subTagIndex="0" verticalPosition="0"/>
-</editor>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/FRTOS/main.c"/>
-<editor factoryID="org.coocox.builder.ui.persistent.PersistentElementFactory" id="org.coocox.welcome.ui.WelcomePage">
-<org.coocox.welcome.ui.WelcomePage/>
-</editor>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/ov7670/main.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/ov7670/drivers/ov7670/ov7670.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/ov7670/drivers/i2c/i2c.c"/>
+<editor factoryID="org.coocox.builder.ui.persistent.PersistentElementFactory" id="org.coocox.builder.ui.editors.ConfigEditor">
+<org.coocox.builder.ui.editors.ConfigEditor horizontalPosition="0" subTagIndex="1" verticalPosition="0"/>
+</editor>
+<editor factoryID="org.coocox.builder.ui.persistent.PersistentElementFactory" id="org.coocox.builder.ui.editors.ConfigEditor">
+<org.coocox.builder.ui.editors.ConfigEditor horizontalPosition="0" subTagIndex="1" verticalPosition="0"/>
+</editor>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/ov7670/cmsis_boot/system_stm32f4xx.c"/>
 <editor factoryID="org.coocox.component.ui.editors.repository.RepositoryElementFactory" id="org.coocox.builder.ui.editors.repository.RepositoryBrowser">
 <subPage/>
 </editor>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/ov7670/stdio/printf.c"/>
+<editor factoryID="org.coocox.builder.ui.persistent.PersistentElementFactory" id="org.coocox.builder.ui.editors.ConfigEditor">
+<org.coocox.builder.ui.editors.ConfigEditor horizontalPosition="0" subTagIndex="1" verticalPosition="0"/>
+</editor>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/ov7670/drivers/ov7670/ov7670.h"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/ov7670/drivers/ov7670/ov7670.c"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/ov7670/cmsis_boot/system_stm32f4xx.c"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/ov7670/cmsis_boot/system_stm32f4xx.h"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/ov7670/cmsis_boot/stm32f4xx.h"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/ov7670/drivers/ov7670/ov7670.c"/>
+<editor factoryID="org.coocox.builder.ui.persistent.PersistentElementFactory" id="org.coocox.builder.ui.editors.ConfigEditor">
+<org.coocox.builder.ui.editors.ConfigEditor/>
+</editor>
+<editor factoryID="org.coocox.component.ui.editors.repository.RepositoryElementFactory" id="org.coocox.builder.ui.editors.repository.RepositoryBrowser">
+<subPage/>
+</editor>
 </editors>
+<item historyLabel="ov7670.c" index="1">
+<position/>
+</item>
+<item historyLabel="Configuration" index="3"/>
 <item historyLabel="main.c" index="0">
-<position info="not_deleted" x="3133" y="0"/>
+<position info="not_deleted" x="3975" y="0"/>
 </item>
+<item historyLabel="Configuration" index="4"/>
+<item historyLabel="system_stm32f4xx.c" index="5">
+<position info="not_deleted" x="7738" y="0"/>
+</item>
+<item historyLabel="Configuration" index="4"/>
+<item historyLabel="system_stm32f4xx.c" index="5">
+<position info="not_deleted" x="6969" y="0"/>
+</item>
+<item historyLabel="Configuration" index="4"/>
+<item historyLabel="ov7670.c" index="1">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="ov7670.c" index="1">
+<position info="not_deleted" x="4690" y="10"/>
+</item>
+<item historyLabel="ov7670.c" index="1">
+<position info="not_deleted" x="668" y="10"/>
+</item>
+<item historyLabel="ov7670.c" index="1">
+<position info="not_deleted" x="829" y="6"/>
+</item>
+<item historyLabel="ov7670.c" index="1">
+<position info="not_deleted" x="269" y="6"/>
+</item>
+<item historyLabel="Configuration" index="4"/>
+<item historyLabel="system_stm32f4xx.c" index="5">
+<position info="not_deleted" x="6969" y="0"/>
+</item>
+<item historyLabel="Configuration" index="4"/>
+<item historyLabel="i2c.c" index="2">
+<position info="not_deleted" x="2718" y="0"/>
+</item>
+<item historyLabel="Repository" index="6"/>
+<item historyLabel="i2c.c" index="2">
+<position info="not_deleted" x="2718" y="0"/>
+</item>
+<item historyLabel="Configuration" index="7"/>
 <item historyLabel="main.c" index="0">
-<position info="not_deleted" x="3162" y="0"/>
+<position info="not_deleted" x="189" y="0"/>
 </item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="10417" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="6202" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="6215" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="6239" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="5999" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="6066" y="0"/>
-</item>
-<item historyLabel="stm32f10x_usart.c" index="1">
-<position info="not_deleted" x="22232" y="0"/>
-</item>
-<item historyLabel="stm32f10x_usart.c" index="1">
-<position info="not_deleted" x="22275" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="6098" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="6165" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="6215" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="6239" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="6215" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="6239" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="6215" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="6239" y="0"/>
+<item historyLabel="ov7670.h" index="8">
+<position info="not_deleted" x="409" y="19"/>
 </item>
 <item historyLabel="main.c" index="0">
-<position info="not_deleted" x="6215" y="0"/>
+<position info="not_deleted" x="3253" y="0"/>
 </item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="6239" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="10381" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="10380" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="10448" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
+<item historyLabel="ov7670.c" index="9">
 <position/>
 </item>
 <item historyLabel="main.c" index="0">
-<position info="not_deleted" x="10402" y="10"/>
+<position info="not_deleted" x="3253" y="0"/>
 </item>
 <item historyLabel="main.c" index="0">
-<position info="not_deleted" x="11209" y="0"/>
+<position info="not_deleted" x="3177" y="0"/>
 </item>
-<item historyLabel="Configuration" index="2"/>
-<item historyLabel="Configuration" index="3"/>
-<item historyLabel="main.c" index="4">
-<position info="not_deleted" x="2577" y="0"/>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="323" y="10"/>
 </item>
-<item historyLabel="Configuration" index="5"/>
-<item historyLabel="Configuration" index="6"/>
-<item historyLabel="main.c" index="7">
-<position info="not_deleted" x="2577" y="0"/>
+<item historyLabel="ov7670.c" index="9">
+<position info="not_deleted" x="5694" y="0"/>
 </item>
-<item historyLabel="main.c" index="7">
-<position info="not_deleted" x="10491" y="12"/>
+<item historyLabel="Configuration" index="7"/>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="4480" y="7"/>
 </item>
-<item historyLabel="main.c" index="7">
-<position info="not_deleted" x="6197" y="12"/>
+<item historyLabel="ov7670.c" index="9">
+<position info="not_deleted" x="5694" y="0"/>
 </item>
-<item historyLabel="main.c" index="7">
-<position info="not_deleted" x="10506" y="12"/>
+<item historyLabel="Configuration" index="7"/>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="4375" y="0"/>
 </item>
-<item historyLabel="main.c" index="7">
-<position info="not_deleted" x="5536" y="0"/>
+<item historyLabel="ov7670.c" index="9">
+<position info="not_deleted" x="6811" y="0"/>
 </item>
-<item historyLabel="welcome" index="8"/>
-<item historyLabel="main.c" index="9">
-<position info="not_deleted" x="18219" y="0"/>
+<item historyLabel="Configuration" index="7"/>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="0" y="5254"/>
 </item>
-<item historyLabel="Repository" index="10"/>
-<item historyLabel="main.c" index="9">
-<position info="not_deleted" x="281" y="0"/>
+<item historyLabel="system_stm32f4xx.c" index="10">
+<position info="not_deleted" x="22003" y="0"/>
 </item>
-<item historyLabel="Repository" index="10"/>
-<item historyLabel="printf.c" index="11">
-<position info="not_deleted" x="11635" y="0"/>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="0" y="5254"/>
 </item>
-<item historyLabel="Repository" index="10"/>
-<item historyLabel="main.c" index="9">
-<position info="not_deleted" x="281" y="0"/>
+<item historyLabel="ov7670.c" index="11">
+<position info="not_deleted" x="6811" y="0"/>
 </item>
-<item historyLabel="system_stm32f4xx.c" index="12">
-<position info="not_deleted" x="1170" y="0"/>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="0" y="5254"/>
 </item>
-<item historyLabel="system_stm32f4xx.h" index="13">
+<item historyLabel="Configuration" index="12"/>
+<item historyLabel="main.c" index="0">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="system_stm32f4xx.c" index="12">
-<position info="not_deleted" x="1170" y="0"/>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="3234" y="0"/>
 </item>
-<item historyLabel="stm32f4xx.h" index="14">
-<position info="not_deleted" x="3574" y="0"/>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="4009" y="0"/>
 </item>
-<item historyLabel="system_stm32f4xx.c" index="12">
-<position info="not_deleted" x="1170" y="0"/>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="4026" y="0"/>
 </item>
-<item active="true" historyLabel="main.c" index="9">
-<position info="not_deleted" x="281" y="0"/>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="3283" y="0"/>
+</item>
+<item historyLabel="Repository" index="13"/>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="165" y="0"/>
+</item>
+<item active="true" historyLabel="main.c" index="0">
+<position info="not_deleted" x="3338" y="0"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
@@ -397,50 +398,46 @@
 <actionBarAdvisor/>
 </window>
 <mruList>
+<file factoryID="org.coocox.component.ui.editors.repository.RepositoryElementFactory" id="org.coocox.builder.ui.editors.repository.RepositoryBrowser" name="Repository" tooltip="Repository">
+<persistable>
+<subPage/>
+</persistable>
+</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="main.c" tooltip="ov7670/main.c">
 <persistable path="/ov7670/main.c"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="usbd_cdc_core.c" tooltip="ov7670/usb_cdc/usbd_cdc_core.c">
-<persistable path="/ov7670/usb_cdc/usbd_cdc_core.c"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="system_stm32f4xx.c" tooltip="ov7670/cmsis_boot/system_stm32f4xx.c">
+<persistable path="/ov7670/cmsis_boot/system_stm32f4xx.c"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="usbd_usr.h" tooltip="ov7670/usb_cdc/usbd_usr.h">
-<persistable path="/ov7670/usb_cdc/usbd_usr.h"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="ov7670.c" tooltip="ov7670/drivers/ov7670/ov7670.c">
+<persistable path="/ov7670/drivers/ov7670/ov7670.c"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="usbd_req.h" tooltip="ov7670/usb_cdc/usbd_req.h">
-<persistable path="/ov7670/usb_cdc/usbd_req.h"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="ov7670.h" tooltip="ov7670/drivers/ov7670/ov7670.h">
+<persistable path="/ov7670/drivers/ov7670/ov7670.h"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="usbd_ioreq.h" tooltip="ov7670/usb_cdc/usbd_ioreq.h">
-<persistable path="/ov7670/usb_cdc/usbd_ioreq.h"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="i2c.c" tooltip="ov7670/drivers/i2c/i2c.c">
+<persistable path="/ov7670/drivers/i2c/i2c.c"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="usbd_ioreq.c" tooltip="ov7670/usb_cdc/usbd_ioreq.c">
-<persistable path="/ov7670/usb_cdc/usbd_ioreq.c"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f4xx_i2c.c" tooltip="ov7670/cmsis_lib/source/stm32f4xx_i2c.c">
+<persistable path="/ov7670/cmsis_lib/source/stm32f4xx_i2c.c"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="usbd_desc.h" tooltip="ov7670/usb_cdc/usbd_desc.h">
-<persistable path="/ov7670/usb_cdc/usbd_desc.h"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="startup_stm32f4xx.c" tooltip="ov7670/cmsis_boot/startup/startup_stm32f4xx.c">
+<persistable path="/ov7670/cmsis_boot/startup/startup_stm32f4xx.c"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="usbd_desc.c" tooltip="ov7670/usb_cdc/usbd_desc.c">
-<persistable path="/ov7670/usb_cdc/usbd_desc.c"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="port.c" tooltip="ov7670/FreeRTOS-CM4/port.c">
+<persistable path="/ov7670/FreeRTOS-CM4/port.c"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="usbd_def.h" tooltip="ov7670/usb_cdc/usbd_def.h">
-<persistable path="/ov7670/usb_cdc/usbd_def.h"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="FreeRTOS.h" tooltip="ov7670/FreeRTOS-CM4/include/FreeRTOS.h">
+<persistable path="/ov7670/FreeRTOS-CM4/include/FreeRTOS.h"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="usbd_core.h" tooltip="ov7670/usb_cdc/usbd_core.h">
-<persistable path="/ov7670/usb_cdc/usbd_core.h"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="ov7670.c" tooltip="ov7670/drivers/ov7670/ov7670.c">
+<persistable path="/ov7670/drivers/ov7670/ov7670.c"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="usbd_conf.h" tooltip="ov7670/usb_cdc/usbd_conf.h">
-<persistable path="/ov7670/usb_cdc/usbd_conf.h"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="ov7670.h" tooltip="ov7670/drivers/ov7670/ov7670.h">
+<persistable path="/ov7670/drivers/ov7670/ov7670.h"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="usbd_conf_template.h" tooltip="ov7670/usb_cdc/usbd_conf_template.h">
-<persistable path="/ov7670/usb_cdc/usbd_conf_template.h"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="usbd_cdc_vcp.c" tooltip="ov7670/usb_cdc/usbd_cdc_vcp.c">
-<persistable path="/ov7670/usb_cdc/usbd_cdc_vcp.c"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="usbd_cdc_vcp.h" tooltip="ov7670/usb_cdc/usbd_cdc_vcp.h">
-<persistable path="/ov7670/usb_cdc/usbd_cdc_vcp.h"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f10x_dma.h" tooltip="dithard/stm_lib/inc/stm32f10x_dma.h">
-<persistable path="/dithard/stm_lib/inc/stm32f10x_dma.h"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="FreeRTOS.h" tooltip="ov7670/FreeRTOS-CM4/include/FreeRTOS.h">
+<persistable path="/ov7670/FreeRTOS-CM4/include/FreeRTOS.h"/>
 </file>
 </mruList>
 </workbench>

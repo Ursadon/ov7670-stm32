@@ -3,6 +3,7 @@
 #include "stm32f4xx_gpio.h"
 #include "stm32f4xx_rcc.h"
 #include "stm32f4xx_i2c.h"
+#include "stm32f4xx_tim.h"
 #include "stm32f4xx_dcmi.h"
 
 #include "drivers/ov7670/ov7670.h"
@@ -10,7 +11,6 @@
 #include "drivers/i2c/i2c.h"
 #include "misc.h"
 #include <stdio.h>
-
 
 void usart_init(void) {
 	/* USARTx configured as follow:
@@ -83,6 +83,7 @@ void usartSendWord(uint16_t word) {
 	usPrintChar(b1);
 	usPrintChar(b2);
 }
+
 void delay(unsigned int ms) {
 	//4694 = 1 ms
 	while (ms > 1) {
@@ -90,6 +91,7 @@ void delay(unsigned int ms) {
 		asm("nop");
 	}
 }
+
 static ErrorStatus MCO_init(void) {
 	ErrorStatus status = ERROR;
 	GPIO_InitTypeDef GPIO_InitStructure;
@@ -102,60 +104,108 @@ static ErrorStatus MCO_init(void) {
 	GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_UP;
 	GPIO_Init(GPIOC, &GPIO_InitStructure);
 
-	RCC_MCO2Config(RCC_MCO2Source_PLLCLK, RCC_MCO2Div_4);
+	RCC_MCO2Config(RCC_MCO2Source_PLLCLK, RCC_MCO2Div_5);
 
 	delay(9999);
 	return (status);
 }
+static uint32_t speed = 10;
+void PWM_init(void) {
+	TIM_TimeBaseInitTypeDef TIM_TimeBaseStructure;
+	TIM_OCInitTypeDef TIM_OCInitStructure;
+	GPIO_InitTypeDef GPIO_InitStructure;
+	TIM_DeInit(TIM1);
+	// Start Timer 1 clock
+	RCC_APB2PeriphClockCmd(RCC_APB2Periph_TIM1, ENABLE);
+	//Enable port E clock
+	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOE, ENABLE);
 
+	// Configure PE9 as output for PWM
+	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_9;
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF;
+	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_100MHz;
+	GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
+	GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_DOWN;
+	GPIO_Init(GPIOE, &GPIO_InitStructure);
 
+	// Connect PE9 to Timer 1 channel 1
+	GPIO_PinAFConfig(GPIOE, GPIO_PinSource9, GPIO_AF_TIM1);
+
+	TIM_TimeBaseStructure.TIM_Period = 716;
+	TIM_TimeBaseStructure.TIM_Prescaler = 3906;
+	TIM_TimeBaseStructure.TIM_ClockDivision = 0;
+	TIM_TimeBaseStructure.TIM_CounterMode = TIM_CounterMode_Up;
+	TIM_TimeBaseInit(TIM1, &TIM_TimeBaseStructure);
+
+	/* PWM1 Mode configuration: Channel1 */
+	TIM_OCInitStructure.TIM_OCMode = TIM_OCMode_PWM1;
+	TIM_OCInitStructure.TIM_OutputState = TIM_OutputState_Enable;
+	TIM_OCInitStructure.TIM_Pulse = speed;
+	TIM_OCInitStructure.TIM_OCPolarity = TIM_OCPolarity_High;
+	TIM_OC1Init(TIM1, &TIM_OCInitStructure);
+	TIM_OC1PreloadConfig(TIM1, TIM_OCPreload_Enable);
+	TIM_ARRPreloadConfig(TIM1, ENABLE);
+
+	/* TIM1 enable counter */
+	TIM_Cmd(TIM1, ENABLE);
+	TIM_CtrlPWMOutputs(TIM1, ENABLE);
+}
 
 int main() {
 	SystemInit();
+	speed = 36;
+	PWM_init();
+
 	usart_init();
 	MCO_init();
-	I2CInit();
-	ov7670_init();
-	DCMI_init();
-	DMA_init();
+	//I2CInit();
+	//ov7670_init();
+	//DCMI_init();
+	//DMA_init();
+
+	//set_pos(50);
+
 	unsigned int datachar[8] = { 0, 0, 0, 0, 0, 0, 0, 0 }, it = 0, cmd, arg,
 			data, jk;
 	while (1) {
 		while (USART_GetFlagStatus(USART2, USART_IT_RXNE) != RESET) {
-			it++;
-			if (it == 8) {
-				it = 0;
-			}
-			datachar[it] = USART_ReceiveData(USART2);
-			if (datachar[it] == '\n') {
-				asm("nop");
-			}
-			if (datachar[it] == '\n' && datachar[it - 1] == '\r') {
-				cmd = datachar[1];
-				arg = datachar[2];
-				data = datachar[3];
-				switch (cmd) {
-				case '1':
-					DCMI_Cmd(ENABLE);
-					DCMI_CaptureCmd(ENABLE);
-					DMA_Cmd(DMA_CameraToRAM_Stream, ENABLE);
-					it = 0;
-					break;
-				case '2':
-					ov7670_set(arg, data);
-					it = 0;
-					break;
-				default:
-				case '3':
-
-					it = 0;
-					break;
-				}
-				it = 0;
-				for (jk = 0; jk < 8; jk++) {
-					datachar[jk] = 0;
-				}
-			}
+//			it++;
+//			if (it == 8) {
+//				it = 0;
+//			}
+//			datachar[it] = USART_ReceiveData(USART2);
+//			if (datachar[it] == '\n') {
+//				asm("nop");
+//			}
+//			if (datachar[it] == '\n' && datachar[it - 1] == '\r') {
+//				cmd = datachar[1];
+//				arg = datachar[2];
+//				data = datachar[3];
+//				switch (cmd) {
+//				case '1':
+//					DCMI_Cmd(ENABLE);
+//					DCMI_CaptureCmd(ENABLE);
+//					DMA_Cmd(DMA_CameraToRAM_Stream, ENABLE);
+//					it = 0;
+//					break;
+//				case '2':
+//					ov7670_set(arg, data);
+//					it = 0;
+//					break;
+//				case '3':
+//					PWM_init(arg * 3);
+//					it = 0;
+//					break;
+//				default:
+//					break;
+//				}
+//				it = 0;
+//				for (jk = 0; jk < 8; jk++) {
+//					datachar[jk] = 0;
+//				}
+//			}
+			speed =  USART_ReceiveData(USART2);
+			PWM_init();
 		}
 	}
 }
@@ -172,7 +222,7 @@ void DCMI_IRQHandler(void) {
 	if (DCMI_GetITStatus(DCMI_IT_FRAME)) {
 		__disable_irq();
 		for (i = 0; i < picture_x * picture_y; i++)
-			usartSendWord(RAM_Buffer[i+2]);
+			usartSendWord(RAM_Buffer[i + 2]);
 		__enable_irq();
 		DCMI_Cmd(DISABLE);
 		DCMI_CaptureCmd(DISABLE);

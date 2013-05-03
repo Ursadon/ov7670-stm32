@@ -25,7 +25,7 @@ void I2CInit(void) {
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
 	GPIO_Init(GPIOB, &GPIO_InitStructure);
 
-	I2C_InitStructure.I2C_ClockSpeed = 400000;
+	I2C_InitStructure.I2C_ClockSpeed = 100000;
 	I2C_InitStructure.I2C_Mode = I2C_Mode_I2C;
 	I2C_InitStructure.I2C_DutyCycle = I2C_DutyCycle_2;
 	I2C_InitStructure.I2C_OwnAddress1 = 0;
@@ -39,17 +39,17 @@ void I2CInit(void) {
 
 void I2C_start(I2C_TypeDef* I2Cx, uint8_t address, uint8_t direction) {
 	while (I2C_GetFlagStatus(I2Cx, I2C_FLAG_BUSY))
-		;
+		asm("nop");
 	I2C_GenerateSTART(I2Cx, ENABLE);
 	while (!I2C_CheckEvent(I2Cx, I2C_EVENT_MASTER_MODE_SELECT))
-		;
+		asm("nop");
 	I2C_Send7bitAddress(I2Cx, address, direction);
 	if (direction == I2C_Direction_Transmitter) {
 		while (!I2C_CheckEvent(I2Cx, I2C_EVENT_MASTER_TRANSMITTER_MODE_SELECTED))
-			;
+			asm("nop");
 	} else if (direction == I2C_Direction_Receiver) {
 		while (!I2C_CheckEvent(I2Cx, I2C_EVENT_MASTER_RECEIVER_MODE_SELECTED))
-			;
+			asm("nop");
 	}
 }
 
@@ -57,7 +57,7 @@ void I2C_write(I2C_TypeDef* I2Cx, uint8_t data) {
 	I2C_SendData(I2Cx, data);
 	// ждем I2C EV8_2 --> ask от ведомого
 	while (!I2C_CheckEvent(I2Cx, I2C_EVENT_MASTER_BYTE_TRANSMITTED))
-		;
+		asm("nop");
 }
 
 uint8_t I2C_read_ack(I2C_TypeDef* I2Cx) {
@@ -66,7 +66,7 @@ uint8_t I2C_read_ack(I2C_TypeDef* I2Cx) {
 	I2C_AcknowledgeConfig(I2Cx, ENABLE);
 	// ждем пока ведомый передаст байт
 	while (!I2C_CheckEvent(I2Cx, I2C_EVENT_MASTER_BYTE_RECEIVED))
-		;
+		asm("nop");
 	// возвращаем принятое
 	data = I2C_ReceiveData(I2Cx);
 	return data;
@@ -78,7 +78,7 @@ uint8_t I2C_read_nack(I2C_TypeDef* I2Cx) {
 	I2C_AcknowledgeConfig(I2Cx, DISABLE);
 	// ждем пока ведомый передаст байт
 	while (!I2C_CheckEvent(I2Cx, I2C_EVENT_MASTER_BYTE_RECEIVED))
-		;
+		asm("nop");
 	// возвращаем принятое
 	data = I2C_ReceiveData(I2Cx);
 	return data;
