@@ -9,6 +9,9 @@
 #include "drivers/ov7670/ov7670.h"
 #include "drivers/ov7670/ov7670reg.h"
 #include "drivers/i2c/i2c.h"
+
+#include "FreeRTOS.h"
+#include "task.h"
 #include "misc.h"
 #include <stdio.h>
 
@@ -150,7 +153,31 @@ void PWM_init(void) {
 	TIM_Cmd(TIM1, ENABLE);
 	TIM_CtrlPWMOutputs(TIM1, ENABLE);
 }
+void vVoltageMain(void *pvParameters) {
+	GPIO_InitTypeDef  GPIO_InitStructure;
+	/* GPIOD Periph clock enable */
+	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOD, ENABLE);
 
+	/* Configure PD12, PD13, PD14 and PD15 in output pushpull mode */
+	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_12 | GPIO_Pin_13| GPIO_Pin_14| GPIO_Pin_15;
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_OUT;
+	GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
+	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_100MHz;
+	GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_NOPULL;
+	GPIO_Init(GPIOD, &GPIO_InitStructure);
+	for (;;) {
+	    GPIO_SetBits(GPIOD, GPIO_Pin_12);
+	    vTaskDelay(1000);
+	    GPIO_SetBits(GPIOD, GPIO_Pin_13);
+	    vTaskDelay(1000);
+	    GPIO_SetBits(GPIOD, GPIO_Pin_14);
+	    vTaskDelay(1000);
+	    GPIO_SetBits(GPIOD, GPIO_Pin_15);
+	    vTaskDelay(1000);
+	    GPIO_ResetBits(GPIOD, GPIO_Pin_12|GPIO_Pin_13|GPIO_Pin_14|GPIO_Pin_15);
+	    vTaskDelay(1000);
+	}
+}
 int main() {
 	SystemInit();
 //	speed = 36;
@@ -162,7 +189,9 @@ int main() {
 	ov7670_init();
 	DCMI_init();
 	DMA_init();
-
+	xTaskCreate( vVoltageMain, ( signed char * ) "vVoltageMain",
+			configMINIMAL_STACK_SIZE, NULL, 0, ( xTaskHandle * ) NULL);
+	vTaskStartScheduler();
 	unsigned int datachar[8] = { 0, 0, 0, 0, 0, 0, 0, 0 }, it = 0, cmd, arg,
 			data, jk;
 	while (1) {
