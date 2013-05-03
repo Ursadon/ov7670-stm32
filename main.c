@@ -153,59 +153,56 @@ void PWM_init(void) {
 
 int main() {
 	SystemInit();
-	speed = 36;
-	PWM_init();
+//	speed = 36;
+//	PWM_init();
 
 	usart_init();
 	MCO_init();
-	//I2CInit();
-	//ov7670_init();
-	//DCMI_init();
-	//DMA_init();
-
-	//set_pos(50);
+	I2CInit();
+	ov7670_init();
+	DCMI_init();
+	DMA_init();
 
 	unsigned int datachar[8] = { 0, 0, 0, 0, 0, 0, 0, 0 }, it = 0, cmd, arg,
 			data, jk;
 	while (1) {
 		while (USART_GetFlagStatus(USART2, USART_IT_RXNE) != RESET) {
-//			it++;
-//			if (it == 8) {
-//				it = 0;
-//			}
-//			datachar[it] = USART_ReceiveData(USART2);
-//			if (datachar[it] == '\n') {
-//				asm("nop");
-//			}
-//			if (datachar[it] == '\n' && datachar[it - 1] == '\r') {
-//				cmd = datachar[1];
-//				arg = datachar[2];
-//				data = datachar[3];
-//				switch (cmd) {
-//				case '1':
-//					DCMI_Cmd(ENABLE);
-//					DCMI_CaptureCmd(ENABLE);
-//					DMA_Cmd(DMA_CameraToRAM_Stream, ENABLE);
-//					it = 0;
-//					break;
-//				case '2':
-//					ov7670_set(arg, data);
-//					it = 0;
-//					break;
-//				case '3':
-//					PWM_init(arg * 3);
-//					it = 0;
-//					break;
-//				default:
-//					break;
-//				}
-//				it = 0;
-//				for (jk = 0; jk < 8; jk++) {
-//					datachar[jk] = 0;
-//				}
-//			}
-			speed =  USART_ReceiveData(USART2);
-			PWM_init();
+			it++;
+			if (it == 8) {
+				it = 0;
+			}
+			datachar[it] = USART_ReceiveData(USART2);
+			if (datachar[it] == '\n') {
+				asm("nop");
+			}
+			if (datachar[it] == '\n' && datachar[it - 1] == '\r') {
+				cmd = datachar[1];
+				arg = datachar[2];
+				data = datachar[3];
+				switch (cmd) {
+				case '1':
+					DCMI_Cmd(ENABLE);
+					DCMI_CaptureCmd(ENABLE);
+					DMA_Cmd(DMA_CameraToRAM_Stream, ENABLE);
+					it = 0;
+					break;
+				case '2':
+					ov7670_set(arg, data);
+					it = 0;
+					break;
+				case '3':
+
+					break;
+				default:
+					break;
+				}
+				it = 0;
+				for (jk = 0; jk < 8; jk++) {
+					datachar[jk] = 0;
+				}
+			}
+//			speed =  USART_ReceiveData(USART2);
+//			PWM_init();
 		}
 	}
 }

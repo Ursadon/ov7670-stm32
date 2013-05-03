@@ -11,13 +11,34 @@
 <folder appearance="1" expanded="2">
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
 <part id="0"/>
+<part id="1"/>
+<part id="2"/>
+<part id="3"/>
+<part id="4"/>
 </presentation>
 </folder>
 </info>
 </editorArea>
 <editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="main.c" partName="main.c" path="E:/Dropbox/Priv/Projects/ov7670-stm32/main.c" title="main.c" tooltip="E:/Dropbox/Priv/Projects/ov7670-stm32/main.c" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/ov7670/main.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="4026" selectionTopPixel="1725"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="5842" selectionTopPixel="2510"/>
+</editor>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="i2c.c" partName="i2c.c" path="E:/Dropbox/Priv/Projects/ov7670-stm32/drivers/i2c/i2c.c" title="i2c.c" tooltip="E:/Dropbox/Priv/Projects/ov7670-stm32/drivers/i2c/i2c.c" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/ov7670/drivers/i2c/i2c.c"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="871" selectionTopPixel="0"/>
+</editor>
+<editor id="org.coocox.builder.ui.editors.ConfigEditor" name="" partName="Configuration" title="Configuration" tooltip="" workbook="DefaultEditorWorkbook">
+<input factoryID="org.coocox.builder.ui.persistent.PersistentElementFactory">
+<org.coocox.builder.ui.editors.ConfigEditor horizontalPosition="0" subTagIndex="1" verticalPosition="0"/>
+</input>
+</editor>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f4xx_tim.c" partName="stm32f4xx_tim.c" path="E:/Dropbox/Priv/Projects/ov7670-stm32/cmsis_lib/source/stm32f4xx_tim.c" title="stm32f4xx_tim.c" tooltip="E:/Dropbox/Priv/Projects/ov7670-stm32/cmsis_lib/source/stm32f4xx_tim.c" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/ov7670/cmsis_lib/source/stm32f4xx_tim.c"/>
+<editorState selectionHorizontalPixel="0" selectionLength="10" selectionOffset="9310" selectionTopPixel="2625"/>
+</editor>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f4xx_tim.h" partName="stm32f4xx_tim.h" path="E:/Dropbox/Priv/Projects/ov7670-stm32/cmsis_lib/include/stm32f4xx_tim.h" title="stm32f4xx_tim.h" tooltip="E:/Dropbox/Priv/Projects/ov7670-stm32/cmsis_lib/include/stm32f4xx_tim.h" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/ov7670/cmsis_lib/include/stm32f4xx_tim.h"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="3403" selectionTopPixel="1140"/>
 </editor>
 </editors>
 <views>
@@ -35,7 +56,7 @@
 <element path="/ov7670/drivers/ov7670"/>
 </expanded>
 <selection>
-<element path="/ov7670/main.c"/>
+<element path="/ov7670/drivers/i2c/i2c.c"/>
 </selection>
 </viewState>
 </view>
@@ -244,152 +265,163 @@
 <navigationHistory>
 <editors>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/ov7670/main.c"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/ov7670/drivers/ov7670/ov7670.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/ov7670/cmsis_boot/system_stm32f4xx.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/ov7670/cmsis_lib/include/stm32f4xx_tim.h"/>
+<editor factoryID="org.coocox.component.ui.editors.repository.RepositoryElementFactory" id="org.coocox.builder.ui.editors.repository.RepositoryBrowser">
+<subPage/>
+</editor>
+<editor factoryID="org.coocox.builder.ui.persistent.PersistentElementFactory" id="org.coocox.builder.ui.editors.ConfigEditor">
+<org.coocox.builder.ui.editors.ConfigEditor/>
+</editor>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/ov7670/drivers/i2c/i2c.c"/>
 <editor factoryID="org.coocox.builder.ui.persistent.PersistentElementFactory" id="org.coocox.builder.ui.editors.ConfigEditor">
 <org.coocox.builder.ui.editors.ConfigEditor horizontalPosition="0" subTagIndex="1" verticalPosition="0"/>
 </editor>
-<editor factoryID="org.coocox.builder.ui.persistent.PersistentElementFactory" id="org.coocox.builder.ui.editors.ConfigEditor">
-<org.coocox.builder.ui.editors.ConfigEditor horizontalPosition="0" subTagIndex="1" verticalPosition="0"/>
-</editor>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/ov7670/cmsis_boot/system_stm32f4xx.c"/>
-<editor factoryID="org.coocox.component.ui.editors.repository.RepositoryElementFactory" id="org.coocox.builder.ui.editors.repository.RepositoryBrowser">
-<subPage/>
-</editor>
-<editor factoryID="org.coocox.builder.ui.persistent.PersistentElementFactory" id="org.coocox.builder.ui.editors.ConfigEditor">
-<org.coocox.builder.ui.editors.ConfigEditor horizontalPosition="0" subTagIndex="1" verticalPosition="0"/>
-</editor>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/ov7670/drivers/ov7670/ov7670.h"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/ov7670/drivers/ov7670/ov7670.c"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/ov7670/cmsis_boot/system_stm32f4xx.c"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/ov7670/drivers/ov7670/ov7670.c"/>
-<editor factoryID="org.coocox.builder.ui.persistent.PersistentElementFactory" id="org.coocox.builder.ui.editors.ConfigEditor">
-<org.coocox.builder.ui.editors.ConfigEditor/>
-</editor>
-<editor factoryID="org.coocox.component.ui.editors.repository.RepositoryElementFactory" id="org.coocox.builder.ui.editors.repository.RepositoryBrowser">
-<subPage/>
-</editor>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/ov7670/cmsis_lib/source/stm32f4xx_tim.c"/>
 </editors>
-<item historyLabel="ov7670.c" index="1">
-<position/>
-</item>
-<item historyLabel="Configuration" index="3"/>
 <item historyLabel="main.c" index="0">
-<position info="not_deleted" x="3975" y="0"/>
+<position info="not_deleted" x="3972" y="10"/>
 </item>
-<item historyLabel="Configuration" index="4"/>
-<item historyLabel="system_stm32f4xx.c" index="5">
-<position info="not_deleted" x="7738" y="0"/>
-</item>
-<item historyLabel="Configuration" index="4"/>
-<item historyLabel="system_stm32f4xx.c" index="5">
-<position info="not_deleted" x="6969" y="0"/>
-</item>
-<item historyLabel="Configuration" index="4"/>
-<item historyLabel="ov7670.c" index="1">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="ov7670.c" index="1">
-<position info="not_deleted" x="4690" y="10"/>
-</item>
-<item historyLabel="ov7670.c" index="1">
-<position info="not_deleted" x="668" y="10"/>
-</item>
-<item historyLabel="ov7670.c" index="1">
-<position info="not_deleted" x="829" y="6"/>
-</item>
-<item historyLabel="ov7670.c" index="1">
-<position info="not_deleted" x="269" y="6"/>
-</item>
-<item historyLabel="Configuration" index="4"/>
-<item historyLabel="system_stm32f4xx.c" index="5">
-<position info="not_deleted" x="6969" y="0"/>
-</item>
-<item historyLabel="Configuration" index="4"/>
-<item historyLabel="i2c.c" index="2">
-<position info="not_deleted" x="2718" y="0"/>
-</item>
-<item historyLabel="Repository" index="6"/>
-<item historyLabel="i2c.c" index="2">
-<position info="not_deleted" x="2718" y="0"/>
-</item>
-<item historyLabel="Configuration" index="7"/>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="189" y="0"/>
-</item>
-<item historyLabel="ov7670.h" index="8">
-<position info="not_deleted" x="409" y="19"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="3253" y="0"/>
-</item>
-<item historyLabel="ov7670.c" index="9">
+<item historyLabel="stm32f4xx_tim.h" index="2">
 <position/>
 </item>
 <item historyLabel="main.c" index="0">
-<position info="not_deleted" x="3253" y="0"/>
+<position info="not_deleted" x="4060" y="17"/>
+</item>
+<item historyLabel="stm32f4xx_tim.h" index="2">
+<position/>
 </item>
 <item historyLabel="main.c" index="0">
-<position info="not_deleted" x="3177" y="0"/>
+<position info="not_deleted" x="4060" y="17"/>
 </item>
 <item historyLabel="main.c" index="0">
-<position info="not_deleted" x="323" y="10"/>
-</item>
-<item historyLabel="ov7670.c" index="9">
-<position info="not_deleted" x="5694" y="0"/>
-</item>
-<item historyLabel="Configuration" index="7"/>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="4480" y="7"/>
-</item>
-<item historyLabel="ov7670.c" index="9">
-<position info="not_deleted" x="5694" y="0"/>
-</item>
-<item historyLabel="Configuration" index="7"/>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="4375" y="0"/>
-</item>
-<item historyLabel="ov7670.c" index="9">
-<position info="not_deleted" x="6811" y="0"/>
-</item>
-<item historyLabel="Configuration" index="7"/>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="0" y="5254"/>
-</item>
-<item historyLabel="system_stm32f4xx.c" index="10">
-<position info="not_deleted" x="22003" y="0"/>
+<position info="not_deleted" x="4277" y="0"/>
 </item>
 <item historyLabel="main.c" index="0">
-<position info="not_deleted" x="0" y="5254"/>
-</item>
-<item historyLabel="ov7670.c" index="11">
-<position info="not_deleted" x="6811" y="0"/>
+<position/>
 </item>
 <item historyLabel="main.c" index="0">
-<position info="not_deleted" x="0" y="5254"/>
-</item>
-<item historyLabel="Configuration" index="12"/>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="0" y="0"/>
+<position/>
 </item>
 <item historyLabel="main.c" index="0">
-<position info="not_deleted" x="3234" y="0"/>
+<position/>
 </item>
 <item historyLabel="main.c" index="0">
-<position info="not_deleted" x="4009" y="0"/>
+<position info="not_deleted" x="4731" y="8"/>
 </item>
 <item historyLabel="main.c" index="0">
-<position info="not_deleted" x="4026" y="0"/>
+<position/>
+</item>
+<item historyLabel="system_stm32f4xx.c" index="1">
+<position/>
 </item>
 <item historyLabel="main.c" index="0">
-<position info="not_deleted" x="3283" y="0"/>
+<position/>
 </item>
-<item historyLabel="Repository" index="13"/>
 <item historyLabel="main.c" index="0">
-<position info="not_deleted" x="165" y="0"/>
+<position info="not_deleted" x="4763" y="8"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="3805" y="0"/>
+</item>
+<item historyLabel="stm32f4xx_tim.h" index="2">
+<position/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="3805" y="0"/>
+</item>
+<item historyLabel="system_stm32f4xx.c" index="1">
+<position info="not_deleted" x="7877" y="0"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="3805" y="0"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="3195" y="0"/>
+</item>
+<item historyLabel="Repository" index="3"/>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="3195" y="0"/>
+</item>
+<item historyLabel="Configuration" index="4"/>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="3195" y="0"/>
+</item>
+<item historyLabel="i2c.c" index="5">
+<position info="not_deleted" x="871" y="0"/>
+</item>
+<item historyLabel="Configuration" index="6"/>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="3195" y="0"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="4731" y="8"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="3200" y="8"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="4731" y="8"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="4377" y="9"/>
+</item>
+<item historyLabel="stm32f4xx_tim.h" index="2">
+<position/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="4377" y="9"/>
+</item>
+<item historyLabel="stm32f4xx_tim.h" index="2">
+<position/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="4377" y="9"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="4435" y="19"/>
+</item>
+<item historyLabel="stm32f4xx_tim.h" index="2">
+<position info="not_deleted" x="15823" y="18"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="4458" y="11"/>
+</item>
+<item historyLabel="stm32f4xx_tim.c" index="7">
+<position info="not_deleted" x="9310" y="10"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="3365" y="0"/>
+</item>
+<item historyLabel="stm32f4xx_tim.h" index="2">
+<position info="not_deleted" x="15823" y="18"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="3365" y="0"/>
+</item>
+<item historyLabel="stm32f4xx_tim.c" index="7">
+<position info="not_deleted" x="9310" y="10"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="3365" y="0"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="4731" y="8"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="4377" y="9"/>
+</item>
+<item historyLabel="stm32f4xx_tim.h" index="2">
+<position info="not_deleted" x="3403" y="0"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="4377" y="9"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="4731" y="8"/>
 </item>
 <item active="true" historyLabel="main.c" index="0">
-<position info="not_deleted" x="3338" y="0"/>
+<position info="not_deleted" x="3200" y="8"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
@@ -398,25 +430,43 @@
 <actionBarAdvisor/>
 </window>
 <mruList>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f4xx_tim.h" tooltip="ov7670/cmsis_lib/include/stm32f4xx_tim.h">
+<persistable path="/ov7670/cmsis_lib/include/stm32f4xx_tim.h"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f4xx_tim.c" tooltip="ov7670/cmsis_lib/source/stm32f4xx_tim.c">
+<persistable path="/ov7670/cmsis_lib/source/stm32f4xx_tim.c"/>
+</file>
+<file factoryID="org.coocox.builder.ui.persistent.PersistentElementFactory" id="org.coocox.builder.ui.editors.ConfigEditor" name="" tooltip="">
+<persistable>
+<org.coocox.builder.ui.editors.ConfigEditor horizontalPosition="0" subTagIndex="1" verticalPosition="0"/>
+</persistable>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="i2c.c" tooltip="ov7670/drivers/i2c/i2c.c">
+<persistable path="/ov7670/drivers/i2c/i2c.c"/>
+</file>
+<file factoryID="org.coocox.builder.ui.persistent.PersistentElementFactory" id="org.coocox.builder.ui.editors.ConfigEditor" name="" tooltip="">
+<persistable>
+<org.coocox.builder.ui.editors.ConfigEditor horizontalPosition="0" subTagIndex="1" verticalPosition="0"/>
+</persistable>
+</file>
 <file factoryID="org.coocox.component.ui.editors.repository.RepositoryElementFactory" id="org.coocox.builder.ui.editors.repository.RepositoryBrowser" name="Repository" tooltip="Repository">
 <persistable>
 <subPage/>
 </persistable>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="main.c" tooltip="ov7670/main.c">
-<persistable path="/ov7670/main.c"/>
-</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="system_stm32f4xx.c" tooltip="ov7670/cmsis_boot/system_stm32f4xx.c">
 <persistable path="/ov7670/cmsis_boot/system_stm32f4xx.c"/>
+</file>
+<file factoryID="org.coocox.builder.ui.persistent.PersistentElementFactory" id="org.coocox.builder.ui.editors.ConfigEditor" name="" tooltip="">
+<persistable>
+<org.coocox.builder.ui.editors.ConfigEditor horizontalPosition="0" subTagIndex="1" verticalPosition="0"/>
+</persistable>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="ov7670.c" tooltip="ov7670/drivers/ov7670/ov7670.c">
 <persistable path="/ov7670/drivers/ov7670/ov7670.c"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="ov7670.h" tooltip="ov7670/drivers/ov7670/ov7670.h">
 <persistable path="/ov7670/drivers/ov7670/ov7670.h"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="i2c.c" tooltip="ov7670/drivers/i2c/i2c.c">
-<persistable path="/ov7670/drivers/i2c/i2c.c"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f4xx_i2c.c" tooltip="ov7670/cmsis_lib/source/stm32f4xx_i2c.c">
 <persistable path="/ov7670/cmsis_lib/source/stm32f4xx_i2c.c"/>
@@ -432,12 +482,6 @@
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="ov7670.c" tooltip="ov7670/drivers/ov7670/ov7670.c">
 <persistable path="/ov7670/drivers/ov7670/ov7670.c"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="ov7670.h" tooltip="ov7670/drivers/ov7670/ov7670.h">
-<persistable path="/ov7670/drivers/ov7670/ov7670.h"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="FreeRTOS.h" tooltip="ov7670/FreeRTOS-CM4/include/FreeRTOS.h">
-<persistable path="/ov7670/FreeRTOS-CM4/include/FreeRTOS.h"/>
 </file>
 </mruList>
 </workbench>

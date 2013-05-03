@@ -20,11 +20,11 @@ uint8_t ov7670_get(uint8_t reg) {
 	I2C_start(I2C2, 0x42, I2C_Direction_Transmitter);
 	I2C_write(I2C2, reg);
 	I2C_stop(I2C2);
-	delayx(1000);
+	delayx(9999);
 	I2C_start(I2C2, 0x43, I2C_Direction_Receiver);
 	data = I2C_read_nack(I2C2);
 	I2C_stop(I2C2);
-	delayx(1000);
+	delayx(9999);
 	return data;
 }
 
@@ -33,7 +33,7 @@ uint8_t ov7670_set(uint8_t reg, uint8_t data) {
 	I2C_write(I2C2, reg);
 	I2C_write(I2C2, data);
 	I2C_stop(I2C2);
-	delayx(1000);
+	delayx(9999);
 	return 0;
 }
 
