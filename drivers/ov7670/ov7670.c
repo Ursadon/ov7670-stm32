@@ -225,7 +225,7 @@ void DMA_init() {
 	}
 
 	// DMA Stream enable
-	DMA_Cmd(DMA_CameraToRAM_Stream, ENABLE);
+	//DMA_Cmd(DMA_CameraToRAM_Stream, ENABLE);
 }
 
 void DCMI_init() {
@@ -304,5 +304,5 @@ void DCMI_init() {
 	DCMI_ITConfig(DCMI_IT_FRAME, ENABLE);
 	// Enable DCMI Capture mode
 	DCMI_Cmd(ENABLE);
-	DCMI_CaptureCmd(ENABLE);
+	//DCMI_CaptureCmd(ENABLE);
 }

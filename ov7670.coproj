@@ -95,16 +95,16 @@
     <File name="FreeRTOS-CM4/tasks.c" path="FreeRTOS-CM4/tasks.c" type="1"/>
     <File name="cmsis_lib/include/stm32f4xx_usart.h" path="cmsis_lib/include/stm32f4xx_usart.h" type="1"/>
     <File name="FreeRTOS-CM4/include/croutine.h" path="FreeRTOS-CM4/include/croutine.h" type="1"/>
-    <File name="cmsis_boot/stm32f4xx.h" path="cmsis_boot/stm32f4xx.h" type="1"/>
-    <File name="cmsis_boot/startup" path="" type="2"/>
     <File name="cmsis/core_cm4_simd.h" path="cmsis/core_cm4_simd.h" type="1"/>
+    <File name="cmsis_boot/startup" path="" type="2"/>
+    <File name="cmsis_boot/stm32f4xx.h" path="cmsis_boot/stm32f4xx.h" type="1"/>
     <File name="cmsis/core_cmFunc.h" path="cmsis/core_cmFunc.h" type="1"/>
-    <File name="cmsis/core_cm4.h" path="cmsis/core_cm4.h" type="1"/>
     <File name="FreeRTOS-CM4/include/timers.h" path="FreeRTOS-CM4/include/timers.h" type="1"/>
+    <File name="cmsis/core_cm4.h" path="cmsis/core_cm4.h" type="1"/>
     <File name="cmsis_lib/source/misc.c" path="cmsis_lib/source/misc.c" type="1"/>
     <File name="cmsis_lib/include/stm32f4xx_tim.h" path="cmsis_lib/include/stm32f4xx_tim.h" type="1"/>
-    <File name="drivers/ov7670/ov7670.c" path="drivers/ov7670/ov7670.c" type="1"/>
     <File name="syscalls/syscalls.c" path="syscalls/syscalls.c" type="1"/>
+    <File name="drivers/ov7670/ov7670.c" path="drivers/ov7670/ov7670.c" type="1"/>
     <File name="cmsis_lib/source/stm32f4xx_i2c.c" path="cmsis_lib/source/stm32f4xx_i2c.c" type="1"/>
     <File name="cmsis_lib/source" path="" type="2"/>
     <File name="drivers/ov7670/ov7670reg.h" path="drivers/ov7670/ov7670reg.h" type="1"/>
@@ -126,31 +126,31 @@
     <File name="drivers" path="" type="2"/>
     <File name="cmsis_boot/system_stm32f4xx.c" path="cmsis_boot/system_stm32f4xx.c" type="1"/>
     <File name="drivers/ov7670" path="" type="2"/>
+    <File name="FreeRTOS-CM4/include/semphr.h" path="FreeRTOS-CM4/include/semphr.h" type="1"/>
     <File name="FreeRTOS-CM4/queue.c" path="FreeRTOS-CM4/queue.c" type="1"/>
     <File name="cmsis_lib/include/stm32f4xx_dcmi.h" path="cmsis_lib/include/stm32f4xx_dcmi.h" type="1"/>
-    <File name="FreeRTOS-CM4/include/semphr.h" path="FreeRTOS-CM4/include/semphr.h" type="1"/>
     <File name="FreeRTOS-CM4/include/portmacro.h" path="FreeRTOS-CM4/include/portmacro.h" type="1"/>
     <File name="FreeRTOS-CM4/include/mpu_wrappers.h" path="FreeRTOS-CM4/include/mpu_wrappers.h" type="1"/>
     <File name="FreeRTOS-CM4/heap_2.c" path="FreeRTOS-CM4/heap_2.c" type="1"/>
     <File name="cmsis" path="" type="2"/>
-    <File name="FreeRTOS-CM4/include/StackMacros.h" path="FreeRTOS-CM4/include/StackMacros.h" type="1"/>
     <File name="cmsis_lib" path="" type="2"/>
+    <File name="FreeRTOS-CM4/include/StackMacros.h" path="FreeRTOS-CM4/include/StackMacros.h" type="1"/>
     <File name="FreeRTOS-CM4/include/FreeRTOS.h" path="FreeRTOS-CM4/include/FreeRTOS.h" type="1"/>
     <File name="cmsis_lib/include/stm32f4xx_dma.h" path="cmsis_lib/include/stm32f4xx_dma.h" type="1"/>
-    <File name="cmsis_lib/source/stm32f4xx_tim.c" path="cmsis_lib/source/stm32f4xx_tim.c" type="1"/>
     <File name="FreeRTOS-CM4" path="" type="2"/>
+    <File name="cmsis_lib/source/stm32f4xx_tim.c" path="cmsis_lib/source/stm32f4xx_tim.c" type="1"/>
     <File name="cmsis_lib/include/stm32f4xx_gpio.h" path="cmsis_lib/include/stm32f4xx_gpio.h" type="1"/>
-    <File name="syscalls" path="" type="2"/>
     <File name="drivers/i2c" path="" type="2"/>
-    <File name="FreeRTOS-CM4/include/portable.h" path="FreeRTOS-CM4/include/portable.h" type="1"/>
+    <File name="syscalls" path="" type="2"/>
     <File name="FreeRTOS-CM4/timers.c" path="FreeRTOS-CM4/timers.c" type="1"/>
+    <File name="FreeRTOS-CM4/include/portable.h" path="FreeRTOS-CM4/include/portable.h" type="1"/>
     <File name="cmsis_lib/include/misc.h" path="cmsis_lib/include/misc.h" type="1"/>
     <File name="cmsis_lib/include" path="" type="2"/>
     <File name="FreeRTOS-CM4/include/task.h" path="FreeRTOS-CM4/include/task.h" type="1"/>
     <File name="FreeRTOS-CM4/list.c" path="FreeRTOS-CM4/list.c" type="1"/>
     <File name="drivers/ov7670/ov7670.h" path="drivers/ov7670/ov7670.h" type="1"/>
-    <File name="FreeRTOS-CM4/croutine.c" path="FreeRTOS-CM4/croutine.c" type="1"/>
     <File name="drivers/i2c/i2c.h" path="drivers/i2c/i2c.h" type="1"/>
+    <File name="FreeRTOS-CM4/croutine.c" path="FreeRTOS-CM4/croutine.c" type="1"/>
     <File name="main.c" path="main.c" type="1"/>
   </Files>
 </Project>

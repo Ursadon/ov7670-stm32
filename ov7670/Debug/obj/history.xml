@@ -7,8 +7,8 @@
       <target file="tasks.o" lastModified="13e6c05e55b">
          <source file="..\..\..\FreeRTOS-CM4\tasks.c" lastModified="13e5b797a80"/>
       </target>
-      <target file="ov7670.o" lastModified="13e6c0604aa">
-         <source file="..\..\..\drivers\ov7670\ov7670.c" lastModified="13e6bbc51bf"/>
+      <target file="ov7670.o" lastModified="13e6e0bacbd">
+         <source file="..\..\..\drivers\ov7670\ov7670.c" lastModified="13e6e0ba2a5"/>
       </target>
       <target file="startup_stm32f4xx.o" lastModified="13e6c05d395">
          <source file="..\..\..\cmsis_boot\startup\startup_stm32f4xx.c" lastModified="13e25213fd4"/>
@@ -61,8 +61,8 @@
       <target file="stm32f4xx_dcmi.o" lastModified="13e6c05e24c">
          <source file="..\..\..\cmsis_lib\source\stm32f4xx_dcmi.c" lastModified="13e257847cd"/>
       </target>
-      <target file="main.o" lastModified="13e6c0af001">
-         <source file="..\..\..\main.c" lastModified="13e6c0a8831"/>
+      <target file="main.o" lastModified="13e6e7683c2">
+         <source file="..\..\..\main.c" lastModified="13e6e7673db"/>
       </target>
       <target file="stm32f4xx_usart.o" lastModified="13e6c05d0e4">
          <source file="..\..\..\cmsis_lib\source\stm32f4xx_usart.c" lastModified="13e25215e4f"/>

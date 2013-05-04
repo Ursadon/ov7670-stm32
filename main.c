@@ -29,13 +29,6 @@ const unsigned char FEND = 0xC0, // Frame END
 		FESC = 0xDB, // Frame ESCape
 		TFEND = 0xDC, // Transposed Frame END
 		TFESC = 0xDD; // Transposed Frame ESCape
-unsigned int usart_rx_buff, usart_rx_buff_temp;
-uint8_t wake_packet_status = header;
-uint8_t packet_started = 0;
-uint8_t wake_cmd = 0;
-uint8_t wake_data[256];
-uint8_t wake_header[4];
-uint8_t wake_data_iterator = 0;
 
 const unsigned char crc8Table[256] = { 0x00, 0x31, 0x62, 0x53, 0xC4, 0xF5, 0xA6,
 		0x97, 0xB9, 0x88, 0xDB, 0xEA, 0x7D, 0x4C, 0x1F, 0x2E, 0x43, 0x72, 0x21,
@@ -238,7 +231,6 @@ void vLED(void *pvParameters) {
 
 void vGetPicture(void *pvParameters) {
 	uint16_t i;
-
 	DCMI_CaptureCmd(ENABLE);
 	// TODO: fix workaround
 	DMA_Cmd(DMA_CameraToRAM_Stream, ENABLE);
@@ -253,12 +245,18 @@ void vGetPicture(void *pvParameters) {
 	}
 }
 
-void packet_parser(uint8_t address, uint8_t cmd, uint8_t *packet,
-		uint8_t packet_crc) {
-	// CRC check
+void packet_parser(uint8_t address, uint8_t cmd, uint8_t numofbytes, uint8_t *packet, uint8_t packet_crc) {
+	uint8_t i;
 	uint8_t crc = 0xFF;
-	crc = crc8Table[crc ^ packet[0]];
+	crc = crc8Table[crc ^ FEND];
+	crc = crc8Table[crc ^ address];
+	crc = crc8Table[crc ^ cmd];
+	crc = crc8Table[crc ^ numofbytes];
+	for (i = 0; i < numofbytes; i++) {
+		crc = crc8Table[crc ^ packet[i]];
+	}
 	if (crc != packet_crc) {
+		// CRC mismatch!
 		return;
 	}
 	// Parse
@@ -267,32 +265,44 @@ void packet_parser(uint8_t address, uint8_t cmd, uint8_t *packet,
 		// TODO: fix workaround
 		DMA_Cmd(DMA_CameraToRAM_Stream, ENABLE);
 	}
+	if (cmd == 2) {
+		ov7670_set(packet[0],packet[1]);
+	}
 }
 
 void vScanUsart(void *pvParameters) {
+	unsigned int usart_rx_buff, usart_rx_buff_temp;
+	uint8_t wake_packet_status = header;
+	uint8_t packet_started = 0;
+	uint8_t wake_cmd = 0;
+	uint8_t wake_data[256];
+	uint8_t wake_header[4];
+	uint8_t wake_data_iterator = 0;
+	uint8_t wake_numofbytes = 0;
 	for (;;) {
 		if ((USART2->SR & USART_FLAG_RXNE) != (u16) RESET) {
 			usart_rx_buff = USART_ReceiveData(USART2);
 			if (usart_rx_buff == FEND) {
+				// Получили FEND, но пакет ещё не окончен - сбрасываем данные
 				if (packet_started == 1) {
-					// Получили FEND, но пакет ещё не окончен - сбрасываем данные
 					wake_data_iterator = 0;
 					wake_packet_status = header;
 					usart_rx_buff_temp = 0xFF;
 					memset(&wake_data[0], 0, sizeof(wake_data));
 					memset(&wake_header[0], 0, sizeof(wake_header));
 				}
-				packet_started = 1; // Получили FEND = пакет начался
+				// Получили FEND = пакет начался
+				packet_started = 1;
 			} else if (packet_started == 1) {
-				// destuffing
+				// Byte destuffing
 				if (usart_rx_buff == TFEND && usart_rx_buff_temp == FESC) {
 					usart_rx_buff = FEND;
 				} else if (usart_rx_buff == TFESC
 						&& usart_rx_buff_temp == FESC) {
 					usart_rx_buff = FESC;
 				}
-
 				usart_rx_buff_temp = usart_rx_buff;
+
 				// Заполняем массив с заголовком
 				switch (wake_packet_status) {
 				case header:
@@ -306,22 +316,23 @@ void vScanUsart(void *pvParameters) {
 					break;
 				case num_bytes:
 					wake_header[num_bytes] = usart_rx_buff;
+					wake_numofbytes = usart_rx_buff;
 					wake_packet_status = data;
 					break;
 				case data:
-
 					if (wake_data_iterator < wake_header[num_bytes]) {
 						wake_data[wake_data_iterator] = usart_rx_buff;
 						wake_data_iterator++;
 					} else if (wake_data_iterator >= wake_header[num_bytes]) {
 						wake_header[crc] = usart_rx_buff;
 						// Изъять пакет, очистить переменныe
-						packet_parser(wake_header[address], wake_cmd, wake_data,
+						packet_parser(wake_header[address], wake_cmd, wake_numofbytes, wake_data,
 								wake_header[crc]);
 						wake_data_iterator = 0;
 						wake_packet_status = header;
 						packet_started = 0;
 						wake_cmd = 0;
+						wake_numofbytes = 0;
 						usart_rx_buff_temp = 0xFF;
 						memset(&wake_data[0], 0, sizeof(wake_data));
 						memset(&wake_header[0], 0, sizeof(wake_header));
@@ -345,7 +356,6 @@ int main() {
 	ov7670_init();
 	DCMI_init();
 	DMA_init();
-
 	// Boot completed!
 
 //	speed = 36;
