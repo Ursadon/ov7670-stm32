@@ -20,7 +20,7 @@
 </editorArea>
 <editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="main.c" partName="main.c" path="E:/Dropbox/Priv/Projects/ov7670-stm32/main.c" title="main.c" tooltip="E:/Dropbox/Priv/Projects/ov7670-stm32/main.c" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/ov7670/main.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="11431" selectionTopPixel="4280"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="11765" selectionTopPixel="5300"/>
 </editor>
 <editor id="org.eclipse.cdt.ui.editor.CEditor" name="ov7670.c" partName="ov7670.c" path="E:/Dropbox/Priv/Projects/ov7670-stm32/drivers/ov7670/ov7670.c" title="ov7670.c" tooltip="E:/Dropbox/Priv/Projects/ov7670-stm32/drivers/ov7670/ov7670.c" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/ov7670/drivers/ov7670/ov7670.c"/>
@@ -32,7 +32,7 @@
 </editor>
 <editor id="org.eclipse.cdt.ui.editor.CEditor" name="startup_stm32f4xx.c" partName="startup_stm32f4xx.c" path="E:/Dropbox/Priv/Projects/ov7670-stm32/cmsis_boot/startup/startup_stm32f4xx.c" title="startup_stm32f4xx.c" tooltip="E:/Dropbox/Priv/Projects/ov7670-stm32/cmsis_boot/startup/startup_stm32f4xx.c" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/ov7670/cmsis_boot/startup/startup_stm32f4xx.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="14785" selectionTopPixel="3795"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="20985" selectionTopPixel="5660"/>
 </editor>
 </editors>
 <views>
@@ -180,8 +180,8 @@
 <hide_menu_item_id id="org.coocox.builder.rcp.flashMenu"/>
 <hide_menu_item_id id="org.coocox.builder.ui.debug"/>
 <hide_menu_item_id id="org.coocox.builder.ui.showHelpViewAction"/>
-<hide_menu_item_id id="org.coocox.builder.ui.showHelpViewAction1"/>
 <hide_menu_item_id id="org.coocox.builder.ui.newFile"/>
+<hide_menu_item_id id="org.coocox.builder.ui.showHelpViewAction1"/>
 <hide_menu_item_id id="org.coocox.builder.ui.actions.ConfigurationAction"/>
 <hide_menu_item_id id="org.coocox.builder.ui.builderDefaultLayout"/>
 <hide_menu_item_id id="org.eclipse.jdt.ui.source.menu"/>
@@ -202,8 +202,8 @@
 <hide_toolbar_item_id id="org.eclipse.ui.edit.text.toggleShowSelectedElementOnly"/>
 <hide_toolbar_item_id id="org.coocox.builder.ui.build"/>
 <hide_toolbar_item_id id="org.coocox.welcome.ui.action.welcome"/>
-<hide_toolbar_item_id id="org.coocox.codebugger.configuration.coideProgramDownloadAction"/>
 <hide_toolbar_item_id id="org.coocox.component.ui.ShowRepositoryAction"/>
+<hide_toolbar_item_id id="org.coocox.codebugger.configuration.coideProgramDownloadAction"/>
 <view id="org.eclipse.ui.console.ConsoleView"/>
 <view id="org.eclipse.debug.ui.DebugView"/>
 <view id="org.coocox.codebugger.trace.ui.traceview"/>
@@ -270,104 +270,11 @@
 <editors>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/ov7670/main.c"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/ov7670/drivers/ov7670/ov7670.c"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/ov7670/cmsis_lib/include/stm32f4xx_dma.h"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/ov7670/drivers/ov7670/ov7670.h"/>
-<editor factoryID="org.eclipse.cdt.ui.ExternalEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="E:\dev\gcc-arm\arm-none-eabi\include\unistd.h" project="ov7670"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/ov7670/cmsis_boot/startup/startup_stm32f4xx.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/ov7670/cmsis_boot/startup/startup_stm32f4xx.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/ov7670/FreeRTOS-CM4/include/task.h"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/ov7670/cmsis_boot/startup/startup_stm32f4xx.c"/>
 </editors>
-<item historyLabel="stm32f4xx_dma.h" index="2">
-<position/>
-</item>
-<item historyLabel="ov7670.c" index="1">
-<position info="not_deleted" x="6192" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="8275" y="0"/>
-</item>
-<item historyLabel="ov7670.c" index="1">
-<position info="not_deleted" x="5984" y="18"/>
-</item>
-<item historyLabel="stm32f4xx_dma.h" index="2">
-<position/>
-</item>
-<item historyLabel="ov7670.c" index="1">
-<position info="not_deleted" x="6005" y="27"/>
-</item>
-<item historyLabel="stm32f4xx_dma.h" index="2">
-<position info="not_deleted" x="10560" y="23"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="8275" y="0"/>
-</item>
-<item historyLabel="ov7670.c" index="1">
-<position info="not_deleted" x="5734" y="9"/>
-</item>
-<item historyLabel="ov7670.h" index="3">
-<position info="not_deleted" x="652" y="9"/>
-</item>
-<item historyLabel="stm32f4xx_dma.h" index="2">
-<position info="not_deleted" x="10560" y="23"/>
-</item>
-<item historyLabel="ov7670.h" index="3">
-<position info="not_deleted" x="652" y="9"/>
-</item>
-<item historyLabel="ov7670.c" index="1">
-<position info="not_deleted" x="5734" y="9"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position/>
-</item>
-<item historyLabel="ov7670.c" index="1">
-<position info="not_deleted" x="10231" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position/>
-</item>
-<item historyLabel="ov7670.c" index="1">
-<position info="not_deleted" x="10154" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="7250" y="0"/>
-</item>
-<item historyLabel="ov7670.c" index="1">
-<position info="not_deleted" x="6074" y="8"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="11024" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position/>
-</item>
-<item historyLabel="main.c" index="0">
-<position/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="10801" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="10950" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="10510" y="64"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="10950" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="8886" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="9273" y="51"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="10751" y="52"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="483" y="0"/>
-</item>
-<item historyLabel="unistd.h" index="4">
-<position info="not_deleted" x="0" y="0"/>
-</item>
 <item historyLabel="main.c" index="0">
 <position info="not_deleted" x="483" y="0"/>
 </item>
@@ -377,13 +284,13 @@
 <item historyLabel="main.c" index="0">
 <position info="not_deleted" x="8478" y="13"/>
 </item>
-<item historyLabel="startup_stm32f4xx.c" index="5">
+<item historyLabel="startup_stm32f4xx.c" index="2">
 <position info="not_deleted" x="0" y="0"/>
 </item>
 <item historyLabel="main.c" index="0">
 <position info="not_deleted" x="9055" y="0"/>
 </item>
-<item historyLabel="startup_stm32f4xx.c" index="5">
+<item historyLabel="startup_stm32f4xx.c" index="2">
 <position info="not_deleted" x="14785" y="0"/>
 </item>
 <item historyLabel="main.c" index="0">
@@ -422,8 +329,101 @@
 <item historyLabel="ov7670.c" index="1">
 <position info="not_deleted" x="6074" y="8"/>
 </item>
-<item active="true" historyLabel="main.c" index="0">
+<item historyLabel="main.c" index="0">
 <position info="not_deleted" x="8589" y="0"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="5534" y="8"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="5534" y="8"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="5550" y="2"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="6728" y="0"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="504" y="0"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="8980" y="0"/>
+</item>
+<item historyLabel="startup_stm32f4xx.c" index="3">
+<position info="not_deleted" x="14785" y="0"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="11408" y="0"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="11871" y="0"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="8960" y="0"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="9297" y="0"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="8960" y="0"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="8962" y="1"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="5534" y="8"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="5550" y="2"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="8979" y="0"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="11562" y="2"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="11693" y="6"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="8247" y="6"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="8292" y="8"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="11680" y="11"/>
+</item>
+<item historyLabel="task.h" index="4">
+<position info="not_deleted" x="11538" y="11"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="11680" y="11"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="11693" y="6"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="8292" y="8"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="11408" y="0"/>
+</item>
+<item historyLabel="startup_stm32f4xx.c" index="5">
+<position info="not_deleted" x="20985" y="0"/>
+</item>
+<item active="true" historyLabel="main.c" index="0">
+<position info="not_deleted" x="11408" y="0"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
@@ -434,6 +434,12 @@
 <mruList>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="startup_stm32f4xx.c" tooltip="ov7670/cmsis_boot/startup/startup_stm32f4xx.c">
 <persistable path="/ov7670/cmsis_boot/startup/startup_stm32f4xx.c"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="task.h" tooltip="ov7670/FreeRTOS-CM4/include/task.h">
+<persistable path="/ov7670/FreeRTOS-CM4/include/task.h"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f4xx_dcmi.c" tooltip="ov7670/cmsis_lib/source/stm32f4xx_dcmi.c">
+<persistable path="/ov7670/cmsis_lib/source/stm32f4xx_dcmi.c"/>
 </file>
 <file factoryID="org.eclipse.cdt.ui.ExternalEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="unistd.h" tooltip="E:\dev\gcc-arm\arm-none-eabi\include\unistd.h">
 <persistable path="E:\dev\gcc-arm\arm-none-eabi\include\unistd.h" project="ov7670"/>
@@ -459,9 +465,6 @@
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="projdefs.h" tooltip="ov7670/FreeRTOS-CM4/include/projdefs.h">
 <persistable path="/ov7670/FreeRTOS-CM4/include/projdefs.h"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="task.h" tooltip="ov7670/FreeRTOS-CM4/include/task.h">
-<persistable path="/ov7670/FreeRTOS-CM4/include/task.h"/>
-</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f4xx_dcmi.h" tooltip="ov7670/cmsis_lib/include/stm32f4xx_dcmi.h">
 <persistable path="/ov7670/cmsis_lib/include/stm32f4xx_dcmi.h"/>
 </file>
@@ -470,9 +473,6 @@
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="mpu_wrappers.h" tooltip="ov7670/FreeRTOS-CM4/include/mpu_wrappers.h">
 <persistable path="/ov7670/FreeRTOS-CM4/include/mpu_wrappers.h"/>
-</file>
-<file factoryID="org.eclipse.cdt.ui.ExternalEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="task.h" tooltip="E:\Dropbox\Priv\Projects\ov7670-stm32\FreeRTOS-CM4\include\task.h">
-<persistable path="E:\Dropbox\Priv\Projects\ov7670-stm32\FreeRTOS-CM4\include\task.h" project="ov7670"/>
 </file>
 </mruList>
 </workbench>

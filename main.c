@@ -19,7 +19,6 @@
 #include <string.h> /* memset */
 #include <unistd.h> /* close */
 
-static uint32_t speed = 10;
 xSemaphoreHandle xSemPictureReady = NULL;
 
 enum wake_packet {
@@ -162,7 +161,7 @@ static ErrorStatus MCO_init(void) {
 	delay(9999);
 	return (status);
 }
-
+uint32_t speed = 32;
 void PWM_init(void) {
 	TIM_TimeBaseInitTypeDef TIM_TimeBaseStructure;
 	TIM_OCInitTypeDef TIM_OCInitStructure;
@@ -203,6 +202,7 @@ void PWM_init(void) {
 	TIM_Cmd(TIM1, ENABLE);
 	TIM_CtrlPWMOutputs(TIM1, ENABLE);
 }
+
 void vLED(void *pvParameters) {
 	GPIO_InitTypeDef GPIO_InitStructure;
 	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOD, ENABLE);
@@ -245,6 +245,13 @@ void vGetPicture(void *pvParameters) {
 	}
 }
 
+void vServo(void *pvParameters) {
+	for (;;) {
+		PWM_init();
+		vTaskDelay(300);
+	}
+}
+
 void packet_parser(uint8_t address, uint8_t cmd, uint8_t numofbytes, uint8_t *packet, uint8_t packet_crc) {
 	uint8_t i;
 	uint8_t crc = 0xFF;
@@ -252,6 +259,7 @@ void packet_parser(uint8_t address, uint8_t cmd, uint8_t numofbytes, uint8_t *pa
 	crc = crc8Table[crc ^ address];
 	crc = crc8Table[crc ^ cmd];
 	crc = crc8Table[crc ^ numofbytes];
+
 	for (i = 0; i < numofbytes; i++) {
 		crc = crc8Table[crc ^ packet[i]];
 	}
@@ -268,17 +276,22 @@ void packet_parser(uint8_t address, uint8_t cmd, uint8_t numofbytes, uint8_t *pa
 	if (cmd == 2) {
 		ov7670_set(packet[0],packet[1]);
 	}
+	if (cmd == 3) {
+		speed = packet[0];
+	}
 }
+
 
 void vScanUsart(void *pvParameters) {
 	unsigned int usart_rx_buff, usart_rx_buff_temp;
 	uint8_t wake_packet_status = header;
 	uint8_t packet_started = 0;
 	uint8_t wake_cmd = 0;
-	uint8_t wake_data[256];
+	static uint8_t wake_data[256];
 	uint8_t wake_header[4];
 	uint8_t wake_data_iterator = 0;
 	uint8_t wake_numofbytes = 0;
+
 	for (;;) {
 		if ((USART2->SR & USART_FLAG_RXNE) != (u16) RESET) {
 			usart_rx_buff = USART_ReceiveData(USART2);
@@ -358,11 +371,10 @@ int main() {
 	DMA_init();
 	// Boot completed!
 
-//	speed = 36;
-//	PWM_init();
-
 	xTaskCreate( vLED, ( signed char * ) "vLED", configMINIMAL_STACK_SIZE, NULL,
 			0, ( xTaskHandle * ) NULL);
+	//xTaskCreate( vServo, ( signed char * ) "vServo", configMINIMAL_STACK_SIZE, NULL,
+	//		0, ( xTaskHandle * ) NULL);
 	xTaskCreate( vGetPicture, ( signed char * ) "vGetPicture",
 			configMINIMAL_STACK_SIZE, NULL, 0, ( xTaskHandle * ) NULL);
 	xTaskCreate( vScanUsart, ( signed char * ) "vScanUsart",
